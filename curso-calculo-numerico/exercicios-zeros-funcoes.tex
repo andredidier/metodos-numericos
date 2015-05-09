@@ -1,0 +1,611 @@
+\section {Introdução}
+
+\begin{frame}
+\frametitle{Introdução}
+Todas as questões foram obtidas da 3ª edição do livro ``Métodos Numéricos'' de
+José Dias dos Santos e Zanoni Carvalho da Silva.
+\end{frame}
+
+\section{Noções de Aritmética de Máquina}
+\subsection[Ponto flutuante]{Ponto flutuante, aritmética e arredondamento}
+
+\subsubsection{Questão 1.6}
+
+\begin{frame}
+\frametitle{Questão 1.6}
+\framesubtitle{Representação numérica, aritmética de ponto flutuante,
+arredondamento}
+
+Considere a máquina $\machine{10}{5}{-9}{9}$. Nela, verifique se 
+$(a+b)+c = a + (b+c)$, onde
+\begin{align*}
+a &= 32.424\\
+b &= 4.2131\\
+c &= 0.000382
+\end{align*} 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 1.6}
+\framesubtitle{$\machine{10}{5}{-9}{9}$}
+
+Normalizando os números, temos:
+\begin{align*}
+a = 32.424 &= \machinenumber{3.2424}{1}\\
+b = 4.2131 &= \machinenumber{4.2131}{0}\\
+c = 0.000382 &= \machinenumber{3.8200}{-4}
+\end{align*} 
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 1.6}
+\framesubtitle{$\machine{10}{5}{-9}{9}$, 
+$a = \machinenumber{3.4240}{1}$, 
+$b = \machinenumber{4.2131}{0}$,
+$c = \machinenumber{3.8200}{-4}$}
+
+Fazendo $(a+b)+c$, temos:
+{\tiny
+\begin{align*}
+& (\machinenumber{3.2424}{1} + \machinenumber{4.2131}{0}) +
+\machinenumber{3.8200}{-4} \\
+%
+= &(\machinenumber{3.2424}{1} + \machinenumber{0.42131}{1}) +
+\machinenumber{3.8200}{-4}\\
+%
+= &\machinenumber{3.6637}{1} +\machinenumber{3.8200}{-4}\\
+%
+= &\machinenumber{3.6637}{1} +\machinenumber{0.0000382}{1}\\
+%
+= &\machinenumber{3.6637}{1}\\
+\end{align*}
+}
+
+E fazendo $a + (b+c)$, temos:
+{\tiny
+\begin{align*}
+& \machinenumber{3.2424}{1} + 
+  (\machinenumber{4.2131}{0} + \machinenumber{3.8200}{-4})\\
+= &\machinenumber{3.2424}{1} + 
+  (\machinenumber{4.2131}{0} + \machinenumber{0.000382}{0})\\
+= &\machinenumber{3.2424}{1} + \alert<2->{\machinenumber{4.2135}{0}}
+\onslide<2->{\text{ [arredondamento]}}\\
+= &\machinenumber{3.2424}{1} + \machinenumber{0.42135}{1}\\
+= &\alert<2->{\machinenumber{3.6638}{1}}\onslide<2->{\text{ [arredondamento]}}
+\end{align*}
+}
+\onslide<2->{Os resultados são diferentes.}
+
+\end{frame}
+
+\subsubsection{Questão 1.7}
+
+\begin{frame}
+\frametitle{Questão 1.7}
+\framesubtitle{Representação numérica, aritmética de ponto flutuante}
+
+Considere um computador hipotético que trabalha na base 10, com 5 dígitos no
+significando e 2 dígitos no expoente, denotado por $\machine{10}{5}{-99}{99}$.
+Nele calcue o valor de:
+\[
+S = \sum_{n=0}^{4} \frac{1}{7^n}
+\]
+de duas formas: (i) da maior parcela para a menor e (ii) da menor parcela para a
+maior.
+
+O que dizer\footnote{Alguma propriedade dos números reais não foi verificada?
+Dos dois resultados, qual o mais próximo do verdadeiro? Etc.} diante dos
+resultados dos itens (i) e (ii)?
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 1.7}
+\framesubtitle{$\machine{10}{5}{-99}{99}$}
+
+Em (i), calculamos: $\left(\left(\left(\frac{1}{7^0} + \frac{1}{7^1}\right) +
+\frac{1}{7^2}\right) + \frac{1}{7^3}\right) + \frac{1}{7^4}$.
+%
+Temos:
+{\tiny
+\begin{align*}
+  & 
+  \left(
+    \left(
+      \left(\machinenumber{1.0000}{0} + \machinenumber{1.4286}{-1}\right) +
+      \machinenumber{2.0408}{-2}
+    \right) +
+    \machinenumber{2.9155}{-3}
+  \right) +
+  \machinenumber{4.1649}{-4}\\
+= &
+  \left(
+    \left(
+      \machinenumber{1.1429}{0} + \machinenumber{2.0408}{-2}
+    \right) +
+    \machinenumber{2.9155}{-3}
+  \right) +
+  \machinenumber{4.1649}{-4}\\
+= &
+  \left(
+      \machinenumber{1.1633}{0} + \machinenumber{2.9155}{-3}
+  \right) +
+  \machinenumber{4.1649}{-4}\\
+= & \machinenumber{1.1662}{0} + \machinenumber{4.1649}{-4}\\
+= & \alert<2->{\machinenumber{1.1666}{0}}
+\end{align*}
+}
+
+Em (ii), calculamos: $\frac{1}{7^0} + \left(\frac{1}{7^1} +
+\left(\frac{1}{7^2} + \left(\frac{1}{7^3} + \frac{1}{7^4}\right)\right)\right)$.
+%
+Temos:
+{\tiny
+\begin{align*}
+  & 
+  \machinenumber{1.0000}{0} + \left(\machinenumber{1.4286}{-1} +
+  \left(\machinenumber{2.0408}{-2} + \left(\machinenumber{2.9155}{-3} +
+  \machinenumber{4.1649}{-4}\right)\right)\right)\\
+%
+  =& 
+  \machinenumber{1.0000}{0} + 
+  \left(\machinenumber{1.4286}{-1} +
+    \left(\machinenumber{2.0408}{-2} + 
+      \machinenumber{3.3319}{-3}
+    \right)
+  \right)\\
+  =& 
+  \machinenumber{1.0000}{0} + 
+  \left(\machinenumber{1.4286}{-1} +
+    \machinenumber{2.3740}{-2}  
+  \right)\\
+  =& \machinenumber{1.0000}{0} + \machinenumber{1.6660}{-1} \\
+  =& \alert<2->{\machinenumber{1.1666}{0}}
+\end{align*}
+}
+
+\end{frame}
+
+\subsubsection{Questão 1.11.e}
+
+\begin{frame}
+\frametitle{Questão 1.11.e}
+\framesubtitle{Representação numérica, aritmética de ponto flutuante}
+
+Considere o sistema de ponto flutuante dado por $\machine{10}{6}{-99}{99}$. Os
+elementos $x = \machinenumber{0.4721025}{8}$, $y = \machinenumber{1.00321}{5}$ e
+$z = \machinenumber{0.0072134}{6}$ pertencem a essa máquina. Verifique usando as
+representações de $x$, $y$ e $z$ neste sistema, se $x \cdot (y + z) = x \cdot y
++ x \cdot z$.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 1.11.e}
+\framesubtitle{$\machine{10}{6}{-99}{99}$, $x = \machinenumber{0.4721025}{8} $,
+$y = \machinenumber{1.00321}{5} $, $z = \machinenumber{0.0072134}{6} $}
+
+Normalizando os números, temos:
+\begin{align*}
+x = \machinenumber{0.4721025}{8} =& \alert<2>{\machinenumber{4.72102}{7}}
+\onslide<2->{\text{ [arredondamento]}}\\
+y = \machinenumber{1.00321}{5} =& \machinenumber{1.00321}{5}\\
+z = \machinenumber{0.0072134}{6} =& \machinenumber{7.21340}{3}\\
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 1.11.e}
+\framesubtitle{$\machine{10}{6}{-99}{99}$, $x = \machinenumber{4.72102}{7} $,
+$y = \machinenumber{1.00321}{5} $, $z = \machinenumber{7.21340}{3} $}
+
+Fazendo $x \cdot (y + z)$, temos:
+\begin{align*}
+& \machinenumber{4.72102}{7} \cdot \left(\machinenumber{1.00321}{5} +
+\machinenumber{7.21340}{3} \right) \\
+= & \machinenumber{4.72102}{7} \cdot \machinenumber{1.07534}{5} \\
+= & \alert<2->{\machinenumber{5.07670}{12}}
+\end{align*}
+
+Fazendo $x \cdot y + x \cdot z$, temos:
+\begin{align*}
+& \left(\machinenumber{4.72102}{7} \cdot \machinenumber{1.00321}{5}\right) 
+  +
+  \left(\machinenumber{4.72102}{7} \cdot \machinenumber{7.21340}{3} \right) \\
+= &  \machinenumber{4.73617}{12} + \machinenumber{3.40546}{11}\\
+= & \machinenumber{4.73617}{12} + \machinenumber{0.340546}{12}\\
+= & \alert<2->{\machinenumber{5.07672}{12}}
+\end{align*}
+
+\onslide<2->{Logo, os cálculos têm resultados diferentes.}
+
+\end{frame}
+
+\section{Zeros de funções}
+\subsection[Métodos de quebra e métodos iterativos]{Bisseção, falsa posição
+(cordas), M.I.L., Newton e secantes}
+
+\subsubsection{Questão 2.1}
+
+\begin{frame}
+\frametitle{Questão 2.1}
+\framesubtitle{Bisseção, falsa posição (cordas), M.I.L., Newton e secantes}
+{\small
+Para cada função:
+\begin{enumerate}
+  \item Localizar, se existir, raiz real mais próxima da origem;
+  \item Determinar analiticamente um intervalo de amplitude $0.1$ contendo tal
+  raiz;
+  \item Aplicar os métodos abaixo para calcular a raiz aproximada: 
+  \begin{enumerate}{\footnotesize
+    \item Bisseção\footnote{Para o método da Bisseção faça até que o intervalo
+    de separação seja menor que $10^{-2}$ e indique quantas iterações serão
+    necessárias antes de aplicar o método. Para os demais métodos, faça até que
+    $|x_{i+1} - x_i| \leq 10^{-3}$ ou $i = 3$}
+    \item Falsa posição (cordas)
+    \item Iterativo linear
+    \item Newton-Raphson
+    \item Das secantes}
+  \end{enumerate}
+\end{enumerate}
+Considere uma máquina com $5$ casas decimais e arredondamento padrão.
+}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 2.1.g - localizar raiz real próxima à origem}
+\framesubtitle{$\f\left(\x\right) = \x \cdot e^\x + \x^2 - 1$}
+
+Vamos verificar alguns valores próximos da origem que facilitem os cálculos para
+verificar a mudança de sinal:
+\begin{center}
+\begin{tabular}{r|r}
+$\x$ & $\f\left(\x\right)$ \\
+\hline
+\hline
+$\onslide<2->{-1}$ & $\onslide<3->{-\frac{1}{e}}$\\
+\hline
+$\onslide<4->{0}$ & $\onslide<5->{-1.00000}$\\
+\hline
+$\onslide<6->{1}$ & $\onslide<7->{e}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\onslide<7->{Há mudança de sinal no intervalo $[0,1]$, logo existe ao menos uma
+raiz real.}
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 2.1.g - encontrar o intervalo de separação de amplitude
+$0.1$}
+\framesubtitle{$\f\left(\x\right) = \x \cdot e^\x + \x^2 - 1$}
+
+Como $\f$ é uma função crescente\footnote{$\f'\left(\x\right) =
+\left(\x + 1\right)e^\x + 2 \cdot \x$} no intervalo $[0,1]$, calculamos os
+valores de $\f$ com incremento de $0.1$ a partir de 0:
+{\scriptsize
+\begin{center}
+\begin{tabular}{r|r}
+$\x$ & $\f\left(\x\right)$ \\
+\hline
+\hline
+$0$ & $-1.00000$\\
+\hline
+\onslide<2->{$0.1$} & \onslide<3->{$-8.79482908 \cdot 10^{-1}$}\\
+\hline
+\onslide<4->{$0.2$} & \onslide<5->{$-7.15719448 \cdot 10^{-1}$}\\
+\hline
+\onslide<6->{$0.3$} & \onslide<7->{$-5.05042358 \cdot 10^{-1}$}\\
+\hline
+\onslide<8->{$0.4$} & \onslide<9->{$-2.43270121 \cdot 10^{-1}$}\\
+\hline
+\onslide<10->{$0.5$} & \onslide<11->{$7.4360635 \cdot 10^{-2}$}\\
+\hline
+\end{tabular}
+\end{center}
+}
+
+\onslide<11->{Logo, o intervalo de separação de amplitude $0.1$ é $[0.4,0.5]$.}
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 2.1.g - calcular a quantidade de iterações no método da
+bisseção}
+\framesubtitle{$\f\left(\x\right) = \x \cdot e^\x + \x^2 - 1$, 
+$\f'\left(\x\right) = \left(\x + 1\right)e^\x + 2 \cdot \x$, $\I =
+[0.4,0.5]$, $l = 10^{-2}$}
+
+A quantidade de iterações é dada pela fórmula:
+\[
+\k \geq \frac{\ln\left(b_0 - a_0\right) - \ln l}{\ln 2}
+\]
+
+Substituindo pelos valores:
+\begin{align*}
+\k &\geq \frac{\ln\left(\onslide<2->{0.5} - \onslide<3->{0.4}\right) - \ln
+\onslide<4->{10^{-2}}}{\ln 2}\\
+\k &\geq \onslide<5->{3.32193}
+\end{align*}
+
+\onslide<5->{A quantidade de iterações necessárias é $4$.}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 1.g - aplicar o método da bisseção }
+\framesubtitle{$\f\left(\x\right) = \x \cdot e^\x + \x^2 - 1$,
+$\f'\left(\x\right) = \left(\x + 1\right)e^\x + 2 \cdot \x$ 
+$\I = [0.4,0.5]$, $l = 10^{-2}$, $t = 4$, $i_{max} = 3$}
+
+\[
+\x = \frac{a + b}{2}
+\]
+
+{\scriptsize
+\begin{center}
+\begin{tabular}{r|r|r|r|r|r|r}
+ & $a$ & $b$ & $\f\left(a\right)$ & $\f\left(b\right)$ & $\x$ &
+$\f\left(\x\right)$ \\
+\hline
+\hline
+$0$ & 
+  $0.4$ & 
+  \alert<3>{$0.5$} &
+  \onslide<2->{$\machinenumber{-2.43270}{-1}$} &
+  \onslide<2->{\alert<3>{$\machinenumber{7.43606}{-2}$}} & 
+  \alert<3>{$0.45$} &
+  \onslide<2->{\alert<3>{$\machinenumber{-9.17595}{-2}$}}
+\\
+\hline
+\onslide<4->{$1$} & 
+  \onslide<4->{$0.45$} &
+  \onslide<4->{\alert<6>{$0.5$}} & 
+  \onslide<5->{$\machinenumber{-9.17595}{-2}$} &
+  \onslide<5->{\alert<6>{$\machinenumber{7.43606}{-2}$}} & 
+  \onslide<4->{\alert<6>{$0.475$}} &
+  \onslide<5->{\alert<6>{$\machinenumber{-1.05683}{-2}$}}
+\\
+\hline
+\onslide<6->{$2$} & 
+  \onslide<6->{\alert<8>{$0.475$}} &
+  \onslide<6->{$0.5$} &  
+  \onslide<7->{\alert<8>{$\machinenumber{-1.05683}{-2}$}} &
+  \onslide<7->{$\machinenumber{7.43606}{-2}$} &
+  \onslide<6->{\alert<8>{$0.4875$}} &
+  \onslide<7->{\alert<8>{$\machinenumber{3.14235}{-2}$}}
+\\
+\hline
+\onslide<8->{$3$} & 
+  \onslide<8->{\alert<10>{$0.475$}} &
+  \onslide<8->{$0.4875$} &  
+  \onslide<9->{\alert<10>{$\machinenumber{-1.05683}{-2}$}} &
+  \onslide<9->{$\machinenumber{3.14235}{-2}$} &
+  \onslide<8->{\alert<10>{$0.48125$}} &
+  \onslide<9->{\alert<10>{$\machinenumber{1.03101}{-2}$}}
+\\
+\hline
+\onslide<10->{$4$} & 
+  \onslide<10->{$0.475$} &
+  \onslide<10->{$0.48125$} & 
+  \onslide<11->{$\machinenumber{-1.05683}{-2}$} &
+  \onslide<11->{$\machinenumber{1.03101}{-2}$} &
+  \onslide<10->{$0.478125$} & 
+  \onslide<11->{$\machinenumber{-1.58339}{-4}$}
+\\
+\hline
+\end{tabular}
+\end{center}
+}
+
+\onslide<12->{$b_4 - a_4 = 0.00625 < 10^{-2}$ e $\x = 0.478125$}
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 2.1.g - aplicar o método das cordas }
+\framesubtitle{$\f\left(\x\right) = \x \cdot e^\x + \x^2 - 1$,
+$\f'\left(\x\right) = \left(\x + 1\right)e^\x + 2 \cdot \x$ 
+$\I = [0.4,0.5]$, $|\x_{i+1} - \x_i| \leq 10^{-3}$, $i_{max} = 3$}
+
+\[
+\x = \frac{a \cdot \f\left(b\right) - b \cdot
+\f\left(a\right)}{\f\left(b\right) - \f\left(a\right)}
+\]
+
+{\tiny
+\begin{center}
+\begin{tabular}{r|r|r|r|r|r|r|r}
+  & 
+  $a$ & 
+  $b$ &
+  $\f\left(a\right)$ &
+  $\f\left(b\right)$ &
+  $\x_i$ &
+  $\f\left(\x_i\right)$ &
+  $|\x_{i+1} - \x_i|$
+\\
+\hline
+\hline
+  1 &
+  $\machinenumber{4.00000}{-1}$ &
+  $\machinenumber{5.00000}{-1}$ &
+  $\machinenumber{-2.43270}{-1}$&
+  $\machinenumber{7.43610}{-2}$&
+  $\machinenumber{4.76589}{-1}$ &
+  $\machinenumber{-5.28300}{-3}$&
+  ---\\
+\hline
+  2 &
+  $\machinenumber{4.76589}{-1}$&
+  $\machinenumber{5.00000}{-1}$ &
+  $\machinenumber{-5.28300}{-3}$ &
+  $\machinenumber{7.43610}{-2}$ &
+  $\machinenumber{4.78142}{-1}$ &
+  $\machinenumber{-1.02000}{-4}$ &
+  $\machinenumber{1.55292}{-3}$\\
+\hline
+  3 &
+  $\machinenumber{4.78142}{-1}$&
+  $\machinenumber{5.00000}{-1}$ &
+  $\machinenumber{-1.02000}{-4}$ &
+  $\machinenumber{7.43610}{-2}$ &
+  $\machinenumber{4.78172}{-1}$ &
+  $\machinenumber{-2.00000}{-6}$ &
+  $\machinenumber{2.99415}{-5}$\\
+\hline
+\end{tabular}
+\end{center}
+}
+
+Encontramos $\x = 0.478172$.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 2.1.g - aplicar o M.I.L. }
+\framesubtitle{$\f\left(\x\right) = \x \cdot e^\x + \x^2 - 1$,
+$\f'\left(\x\right) = \left(\x + 1\right)e^\x + 2 \cdot \x$ 
+$\I = [0.4,0.5]$, $|\x_{i+1} - \x_i| \leq 10^{-3}$, $i_{max} = 3$}
+
+{\footnotesize
+Inicialmente precisamos determinar uma função geradora $\varphi$. Como $\x
+\cdot e^\x + \x^2 - 1 = 0$, podemos escolher 
+$\varphi_1\left(\x\right) = x = \frac{1 - \x^2}{e^\x}$. Sua derivada é: 
+$\varphi_1'\left(\x\right) = 
+    \frac{\left(x^2-1\right)\cdot e^\x - 2\x \cdot e^\x}
+  {e^{2x}}$
+
+Vamos verificar as condições de convergência:
+\begin{enumerate}
+  \item As duas funções $\varphi_1$ e $\varphi_1'$ são contínuas.
+  \item $|\varphi_1'\left(\x\right)| \leq k < 1, \forall x \in \I$:\\
+\begin{tabular}{r|r}
+$\x$ & $|\varphi_1'\left(\x\right) |$ \\
+\hline
+\hline
+$\machinenumber{4.0000}{-1}$ & $\machinenumber{1.09932}{0}$ \\
+\hline
+$\machinenumber{4.5000}{-1}$ & $\machinenumber{1.08237}{0}$ \\
+\hline
+$\machinenumber{5.0000}{-1}$ & $\machinenumber{1.06143}{0}$ \\
+\hline
+\end{tabular}
+\end{enumerate}
+
+Logo $\varphi_1'$ não pode ser usada. 
+
+Trivialmente não podemos escolher. Tente obter $\varphi_2$ e $\varphi_3$
+isolando os outros termos da equação.
+
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 2.1.g - aplicar o método new Newton-Raphson}
+\framesubtitle{$\f\left(\x\right) = \x \cdot e^\x + \x^2 - 1$,
+$\f'\left(\x\right) = \left(\x + 1\right)e^\x + 2 \cdot \x$ 
+$\I = [0.4,0.5]$, $|\x_{i+1} - \x_i| \leq 10^{-3}$, $i_{max} = 3$}
+
+A função geradora é definida por: 
+\[
+\varphi\left(\x_i\right) = \x_{i+1} = \x_i -
+\frac{\f\left(\x_i\right)}{\f'\left(\x_i\right)}
+\]
+
+Logo, temos que:
+ 
+\[
+\varphi\left(\x_i\right) = \x_{i+1} = \x_i -
+\frac{\x_i \cdot e^\x_i + \x_i^2 - 1}
+{\left(\x_i + 1\right)e^\x_i + 2 \cdot \x_i}
+\]
+
+Aplicando o método obtemos:\\
+{\scriptsize
+\begin{center}
+\begin{tabular}{r|r|r|r}
+  &
+  $\x$ &
+  $\varphi\left(\x\right)$ &
+  $|\x_{i+1} - \x_i|$\\
+\hline
+\hline
+0 & $\machinenumber{4.50000}{-1}$ & $\machinenumber{4.78909}{-1}$ & ---\\
+\hline
+1 & $\machinenumber{4.78909}{-1}$ & $\machinenumber{4.78173}{-1}$ 
+  & $\machinenumber{7.36000}{-4}$\\
+\hline
+\end{tabular}
+\end{center}
+}
+
+Encontramos $\x = 0.478173$.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 2.1.g - aplicar o método das secantes}
+\framesubtitle{$\f\left(\x\right) = \x \cdot e^\x + \x^2 - 1$,
+$\f'\left(\x\right) = \left(\x + 1\right)e^\x + 2 \cdot \x$ 
+$\I = [0.4,0.5]$, $|\x_{i+1} - \x_i| \leq 10^{-3}$, $i_{max} = 3$}
+
+A função geradora é definida por: 
+\[
+\varphi\left(\x_i\right) = \x_{i+1} = 
+\frac
+  {\x_{i-1} \cdot \f\left(\x_i\right) - \x_i \cdot \f \left(\x_{i-1}\right)}
+  {\f\left(\x_i\right) - \f\left(\x_{i-1}\right)}
+\]
+
+Aplicando o método obtemos:\\
+{\tiny
+\begin{center}
+\begin{tabular}{r|r|r|r|r|r|r}
+  &
+  $\x_i$ &
+  $\x_{i-1} $ &
+  $\f\left(\x_i\right) $ &
+  $\f\left(\x_{i-1}\right) $ &
+  $\varphi\left(\x_i\right) $ &
+  $|\x_{i+1} - \x_i|$ \\
+\hline
+\hline
+  0 &
+  $\machinenumber{4.00000}{-1}$ &
+  $\machinenumber{5.00000}{-1}$ &
+  $\machinenumber{-2.43270}{-1}$ &
+  $\machinenumber{7.43610}{-2}$ &
+  $\machinenumber{4.76589}{-1}$ &
+  ---
+  \\
+\hline
+  1 &
+  $\machinenumber{4.76589}{-1}$ &
+  $\machinenumber{4.00000}{-1}$ &
+  $\machinenumber{-5.28000}{-3}$ &
+  $\machinenumber{-2.43270}{-1}$ &
+  $\machinenumber{4.78289}{-1}$ &
+  $\machinenumber{1.70000}{-3}$
+  \\
+\hline
+  2 &
+  $\machinenumber{4.78289}{-1}$ &
+  $\machinenumber{4.76589}{-1}$ &
+  $\machinenumber{3.90000}{-4}$ &
+  $\machinenumber{-5.28200}{-3}$ &
+  $\machinenumber{4.78172}{-1}$ &
+  $\machinenumber{1.17000}{-4}$
+  \\
+\hline
+\end{tabular}
+\end{center}
+}
+
+Encontramos $\x = 0.478172$.
+\end{frame}
+

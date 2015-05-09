@@ -1,0 +1,137 @@
+%% LaTeX Beamer presentation template (requires beamer package)
+%% see http://bitbucket.org/rivanvx/beamer/wiki/Home
+%% idea contributed by H. Turgut Uyar
+%% template based on a template by Till Tantau
+%% this template is still evolving - it might differ in future releases!
+
+\documentclass{beamer}
+
+
+\mode<presentation>
+{
+%\usetheme{CIn}
+\usetheme{CIn20131120}
+
+%\setbeamercovered{transparent}
+}
+
+\usepackage[portuges]{babel}
+\usepackage[utf8]{inputenc}
+
+% font definitions, try \usepackage{ae} instead of the following
+% three lines if you don't like this look
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{amsmath}
+\usepackage{pifont}
+
+\makeatletter
+\newcommand{\footnoteref}[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
+\makeatother
+
+\def\x{x}
+\def\f{\mathrm{f}}
+\def\I{\mathrm{I}}
+\def\k{\mathrm{k}}
+\def\ln{\operatorname{\mathrm{ln}}}
+\newcommand{\machinenumber}[2]{#1 \cdot 10^{#2}}
+\newcommand{\machine}[4]{\mathrm{F}\left(#1,#2,#3,#4\right)}
+\def\ok{\checkmark}
+
+\def\arraystretch{1.2}
+\renewcommand{\tabcolsep}{1pt}
+
+
+\title{Métodos Numéricos}
+\subtitle{}
+
+%\subtitle{}
+
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+%\author{F.~Author\inst{1} \and S.~Another\inst{2}}
+\author{André L. R. Didier\inst{1}}
+
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+\institute[UFPE]
+{
+\inst{1}%
+Departamento de Ciência da Computação\\
+UFPE
+}
+
+% This is only inserted into the PDF information catalog. Can be left
+% out.
+\subject{Métodos Numéricos}
+
+
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+%\AtBeginSubsection[]
+%{
+%\begin{frame}<beamer>
+%\frametitle{Outline}
+%\tableofcontents[currentsection,currentsubsection]
+%\end{frame}
+%}
+
+\AtBeginLecture
+{
+\title{\insertlecture}
+\subtitle{\insertshortlecture}
+\begin{frame}<beamer>
+\titlepage
+\end{frame}
+}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command:
+
+%\beamerdefaultoverlayspecification{<+->}
+
+\includeonlylecture{aula12}
+
+\begin{document}
+
+\lecture[Aula 1]{Apresentação da disciplina}{aula01}
+
+\lecture[Aula 2]{Bases, erros e aritmética de ponto flutuante}{aula02}
+
+\lecture[Aula 3]{Arredondamento e operações aritméticas}{aula03}
+
+\lecture[Aula 4]{Aproximação inicial, método da bisseção e método das cordas}{aula04}
+
+\lecture[Aula 5]{Método iterativo linear e método de Newton}{aula05}
+
+\lecture[Aula 6]{Método das secantes e critérios de parada}{aula06}
+
+\lecture[Aula 7]{Exercícios sobre zeros de funções}{aula07}
+\input{exercicios-zeros-funcoes}
+
+\lecture[Aula 8]{Sistema de equações lineares e método de eliminação de Gauss}{aula08}
+
+\lecture[Aula 12]{Exercícios sobre sistemas de equações lineares}{aula12}
+\input{exercicios-equacoes-lineares}
+
+%\begin{frame}
+%\frametitle{Outline}
+%\tableofcontents
+% You might wish to add the option [pausesections]
+%\end{frame}
+
+\end{document}

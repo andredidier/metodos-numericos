@@ -1,0 +1,604 @@
+
+\begin{frame}
+\frametitle{Introdução}
+Todas as questões foram obtidas da 3ª edição do livro ``Métodos Numéricos'' de
+José Dias dos Santos e Zanoni Carvalho da Silva.
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.1}
+Considere o sistema de equações lineares
+\[\left\{
+\begin{array}{llll}
+5x_1 &+ 6x_2 &+ 12x_3 &= -1 \\
+2x_1 &- 3x_2 &&= -1\\
+4x_1 &+x_2 &-x_3 &= 6
+\end{array}
+\right.\]
+
+Resolva-o usando os seguintes métodos (considere 4 casas decimais e o arredondamento padrão):
+\begin{enumerate}
+  \item Eliminação de Gauss;
+  \item Eliminação de Gauss-Jordan;
+  \item Decomposição LU.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.1 pelo método de eliminação de Gauss}
+\small
+Pelo método de eliminação de Gauss, devemos transformar $Ax = b$ em $T x = c$ onde $T$ é uma matriz triangular.
+%
+Para encontrar $T$ trocamos linhas ou colunas e multiplicamos por constantes.
+%
+Para a matriz extendida do problema:
+\[A = 
+\begin{pmatrix}
+5 & 6 & 12 & | & -1\\
+2 & -3 & 0 & | & -1\\
+4 & 1 & -1 & | & 6 
+\end{pmatrix}
+\]
+Zeramos os elementos da primeira coluna usando
+$m_{11} = -\frac{a_{21}}{a_{11}} = - \frac{2}{5} = -0.4$ e $m_{12}=-\frac{a31}{a11} = -\frac{4}{5}=-0.8$:
+\[
+\begin{pmatrix}
+5 & 6 & 12 & | & -1\\
+0 & -5.4 & -4.8 & | & -0.6\\
+0 & -3.8 & -10.6 & | & 6.8 
+\end{pmatrix}
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.1 pelo método de eliminação de Gauss}
+\small
+A partir da nova matriz
+\[
+\begin{pmatrix}
+5 & 6 & 12 & | & -1\\
+0 & -5.4 & -4.8 & | & -0.6\\
+0 & -3.8 & -10.6 & | & 6.8 
+\end{pmatrix}
+\]
+Zeramos os elementos da segunda coluna usando $m_{21} = -\frac{\dot{a}_{32}}{\dot{a}_{22}} = -\frac{-3.8}{-5.4}=-0.70370$:
+\[
+\begin{pmatrix}
+5 & 6 & 12 & | & -1\\
+0 & -5.4 & -4.8 & | & -0.6\\
+0 & 0 & -7.2222 & | & 7.2222 
+\end{pmatrix}
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.1 pelo método de eliminação de Gauss}
+\small
+Da fórmula geral
+\[
+\left|
+\begin{array}{ll}
+x_n &= \frac{b_n}{a_{nn}}\\
+x_i &= \frac{b_i - \sum_{j=i+1}^{n}a_{ij}x_j}{a_{ii}} \text{, }i = (n-1), (n-2), \ldots, 1
+\end{array} 
+\right.
+\]
+Temos:\\
+$
+\left|
+\begin{array}{ll}
+x_3 &= \frac{b_3}{a_{33}}\\
+x_2 & = \frac{b_2 - a_{23}x_3}{a_{22}}\\
+x_1 & = \frac{b_1 - a_{12}x_2 - a_{13}x_3}{a_{11}}
+\end{array} 
+\right.
+$ e a matriz
+$
+\begin{pmatrix}
+5 & 6 & 12 & | & -1\\
+0 & -5.4 & -4.8 & | & -0.6\\
+0 & 0 & -7.2222 & | & 7.2222 
+\end{pmatrix}
+$
+
+Logo:
+\[
+\left|
+\begin{array}{lll}
+x_3 &= -\frac{7.2222}{7.2222}&=-1\\
+x_2 & = \frac{-0,6 - (-4.8 \times (-1))}{-5.4} &=1\\
+x_1 & = \frac{-1 - 6\times 1 - 12 \times (-1)}{5} &=1
+\end{array} 
+\right.
+\]
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.1 pelo método de eliminação de Gauss-Jordan}
+\small
+Neste método, transformamos a matriz $A$ em uma matriz diagonal. Vamos continuar a transformação do método de Gauss:
+\[
+\begin{pmatrix}
+5 & 6 & 12 & | & -1\\
+0 & -5.4 & -4.8 & | & -0.6\\
+0 & 0 & -7.2222 & | & 7.2222 
+\end{pmatrix}
+\]
+Zeramos os elementos da terceira coluna usando $m_{31}=-\frac{a_{23}}{a_{33}}=-\frac{-4.8}{-7.2222}=-0.66461$ e $m_{32}=-\frac{a_{13}}{a_{33}}=-\frac{12}{-7.2222}=-1.6615$:
+\[
+\begin{pmatrix}
+5 & 6 & 0 & | & 11\\
+0 & -5.4 & 0 & | & -5.3999\\
+0 & 0 & -7.2222 & | & 7.2222 
+\end{pmatrix}
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.1 pelo método de eliminação de Gauss-Jordan}
+Da matriz
+\[
+\begin{pmatrix}
+5 & 6 & 0 & | & 11\\
+0 & -5.4 & 0 & | & -5.3999\\
+0 & 0 & -7.2222 & | & 7.2222 
+\end{pmatrix}
+\]
+Zeramos os elementos da segunda coluna usando $m_{22}=-\frac{a_{12}}{a_{22}}=-\frac{6}{-5.4}=1.1111$:
+\[
+\begin{pmatrix}
+5 & 0 & 0 & | & 5\\
+0 & -5.4 & 0 & | & -5.3999\\
+0 & 0 & -7.2222 & | & 7.2222 
+\end{pmatrix}
+\]
+%
+Temos $x_1=\frac{5}{5}=1$, $x_2=\frac{-5.3999}{-5.4}=\machinenumber{9.9998}{-1}$ e $x_3=\frac{7.2222}{-7.2222}=-1$
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Questão 3.1 pelo método de decomposição LU}
+No método da decomposição LU, transformamos o problema $Ax = b$ em $Ux = y$ e $Ly = b$, onde $A = LU$
+\[A = 
+\begin{pmatrix}
+5 & 6 & 12 & | & -1\\
+2 & -3 & 0 & | & -1\\
+4 & 1 & -1 & | & 6 
+\end{pmatrix}
+\]
+
+Antes de obter $L$ e $U$, precisamos verificar se $\det(A(1:k,1:k)) \ne 0$ ($k=1,2,\ldots,n$):
+
+$
+\begin{array}{c}
+\begin{vmatrix}
+5
+\end{vmatrix} \ne 0\\
+%
+\onslide<2>{\text{\ok}}
+\end{array}
+$,%
+%
+$
+\begin{array}{c}
+\begin{vmatrix}
+5 & 6 \\
+2 & 3
+\end{vmatrix} \ne 0\\
+%
+\onslide<2>{\text{\ok}}
+\end{array}
+$
+e
+$
+\begin{array}{c}
+\begin{vmatrix}
+5 &6 &12\\
+2 &-3 &0\\
+4 &1 &-1
+\end{vmatrix} \ne 0\\
+%
+\onslide<2>{\text{\ok}}
+\end{array}
+$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.1 pelo método de decomposição LU}
+Dadas as fórmulas gerais para $L$ e $U$:
+\[
+\left\{
+\begin{array}{lll}
+l_{ij} = & a_{ij} - \sum_{k=1}^{j-1}l_{ik}u_{kj}, & i \ge  j\\
+%
+u_{ij} = & \frac{a_{ij}-\sum_{k=1}^{i-1}l_{ik}u_{kj} }{l_{ii}}, & i < j
+\end{array}
+\right.
+\]
+Calculamos:
+$
+L = 
+\begin{pmatrix}
+l_{11}=a_{11} &0 &0 \\
+l_{21}=a_{21} &l_{22}=a_{22}-l_{21}u_{12} &0 \\
+l_{31}=a_{31} &l_{32}=a_{32}-l_{31}u_{12} &l_{33}=a_{33} -l_{31}u_{13} -l_{32}u_{23} \\
+\end{pmatrix}
+$
+e
+$
+U = 
+\begin{pmatrix}
+1 & u_{12}=\frac{a_{12}}{l_{11}} & u_{13}=\frac{a_{13}}{l_{11}}\\
+0 & 1 & u_{23}=\frac{a_{23}-l_{21}u_{13}}{l_{22}}\\
+0 & 0 & 1
+\end{pmatrix}
+$
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.1 pelo método de decomposição LU}
+Substituindo os valores da matriz
+\[
+\begin{pmatrix}
+5 & 6 & 12 & | & -1\\
+2 & -3 & 0 & | & -1\\
+4 & 1 & -1 & | & 6 
+\end{pmatrix}
+\]
+
+Em
+
+$
+L = 
+\begin{pmatrix}
+\alert<2>{\only<1-2>{a_{11}}}
+  \only<3->{5} &
+0 &0 \\
+%
+\alert<2>{\only<1-2>{a_{21}}}
+  \only<3->{2} &
+\alert<4>{\only<1-4>{a_{22}-l_{21}u_{12}}}
+  \only<5>{-3-(2)(1.2)}
+  \only<6->{-5.4} &
+0 \\
+%
+\alert<2>{\only<1-2>{a_{31}}}
+  \only<3->{4} &
+\alert<4>{\only<1-4>{a_{32}-l_{31}u_{12}}}
+  \only<5>{1-(4)(1.2)}
+  \only<6->{-3.8} &
+
+\alert<8>{\only<1-8>{a_{33} -l_{31}u_{13} -l_{32}u_{23}}}
+  \only<9>{-1 -(4)(2.4) -(-3.8)(0.88889)} 
+  \only<10->{-7.2222}
+\end{pmatrix}
+$
+
+e
+
+$
+U = 
+\begin{pmatrix}
+1 & 
+\alert<3>{\only<1-3>{\frac{a_{12}}{l_{11}}}}
+  \only<4->{1.2} & 
+\alert<3>{\only<1-3>{\frac{a_{13}}{l_{11}}}}
+  \only<4->{2.4}\\
+%
+0 & 1 & 
+\alert<6>{\only<1-6>{\frac{a_{23}-l_{21}u_{13}}{l_{22}}}}
+  \only<7>{\frac{0-(2)(\frac{12}{5})}{-\frac{27}{5}}}
+  \only<8->{0.88889} \\
+%
+0 & 0 & 1
+\end{pmatrix}
+$
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.1 pelo método de decomposição LU}
+De $Ly=b$, temos:
+
+\[
+\begin{pmatrix}
+5 & 0 &0 \\
+%
+2 & -5.4 & 0 \\
+%
+4 & -3.8 & -7.2222
+\end{pmatrix}
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+y_3
+\end{pmatrix}
+=
+\begin{pmatrix}
+-1\\
+-1\\
+6
+\end{pmatrix}
+\]
+Portanto:
+\[
+\left\{
+\begin{array}{lll}
+5 y_1 &= -1 &\implies y_1 = -0.2\\
+2 y_1 -5.4 y_2 &= -1 &\implies y_2 = 0.11111\\
+4 y_1 -3.8 y_2 -7.2222 y_3 &= 6 &\implies y_3 = -1
+\end{array}
+\right.
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.1 pelo método de decomposição LU}
+De $Ux=y$, temos:
+\[
+\begin{pmatrix}
+1 & 1.2 & 2.4\\
+0 & 1 & 0.88889 \\
+0 & 0 & 1
+\end{pmatrix}
+%
+\begin{pmatrix}
+x_1\\
+x_2\\
+x_3
+\end{pmatrix}
+%
+=
+%
+\begin{pmatrix}
+-0.2\\
+0.11111 \\
+-1
+\end{pmatrix}
+\]
+
+Portanto:
+\[
+\left\{
+\begin{array}{rrrlll}
+    &          &            &          &        &x_3 = -1 \\
+    & x_2      &+0.88889 x_3 &= 0.11111 &\implies&  x_2 = 1\\
+x_1 & +1.2 x_2 &+2.4 x_3    &= -0.2    &\implies&  x_1 = 1
+\end{array}
+\right.
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.2a}
+Determine, aproximadamente, o vetor solução do sistema de equações lineares a seguir, com ``tolerância'' de $10^{-2}$, isto é, faça iterações até que:
+\[
+\max_{1 \le i \le n}\left| x_i^{(k+1)} - x_i^{(k)} \right| \le 10^{-2}
+\]
+Caso isso não ocorra até que $k = 2$, pare. Use 3 casas decimais e arredondamento padrão.
+%
+Parta do vetor nulo e use os métodos iterativos de Jacobi e Gauss-Seidel.
+\[
+\left\{
+\begin{array}{l}
+7 x_1 + 6x_2 + 15 x_3 = 4\\
+2 x_1 -5x_2 = -8\\
+4 x_1 +x_2 - x_3 = 7
+\end{array}
+\right.
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.2a por Jacobi}
+Nos métodos iterativos transformamos o problema $Ax = b$ em $x = Bx + c$. 
+%
+No método de Jacobi, aplicamos a fórmula
+
+\[
+x_i^{(k+1)} = \frac{b_i - \sum_{j = 1, j \ne i}^{n}a_{ij}x_j^{(k)}}{a_{ii}}
+\]
+
+Até que a condição de parada seja satisfeita. 
+%
+Para uma matriz 3x3, temos:
+\[
+\left\{
+\begin{array}{ll}
+x_1^{(k+1)} = &\frac{b_1-a_{12}x_2^{(k)}-a_{13}x_3^{(k)}}{a_{11}}\\
+x_2^{(k+1)} = &\frac{b_2-a_{21}x_1^{(k)}-a_{23}x_3^{(k)}}{a_{22}}\\
+x_3^{(k+1)} = &\frac{b_3-a_{31}x_1^{(k)}-a_{32}x_2^{(k)}}{a_{33}}
+\end{array}
+\right.
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.2a por Jacobi}
+\framesubtitle{Convergência}
+Para garantir que aplicação do método irá convergir para a solução, precisamos transformar a matriz em uma de diagonal estritamente dominante:
+\[
+\begin{pmatrix}
+\only<1-2>{\alert<2>{7}}\only<3->{\alert<4>{15}} & 
+  \only<1->{6} & 
+  \only<1-2>{15}\only<3->{7}
+  \\
+%
+\only<1-2>{2}\only<3->{0} & 
+  \only<1->{\alert<5>{-5}} & 
+  \only<1-2>{0}\only<3->{2}\\
+%
+\only<1-2>{4}\only<3->{-1} & 
+  \only<1->{1 }& 
+  \only<1-2>{-1}\only<3->{\alert<6>{4}}
+\end{pmatrix}
+\]
+\only<4>{$|15| > |6|+|7|$ \ok}
+\only<5>{$|-5| > |0|+|2|$ \ok}
+\only<6>{$|4| > |-1|+|1|$ \ok}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.2a por Jacobi}
+Aplicando para a matriz
+\[
+\begin{pmatrix}
+15 & 6 & 7 & | & 4\\
+0 & -5 & 2 & | & -8\\
+-1 & 1 & 4 & | & 7
+\end{pmatrix}
+\]
+Temos:
+\[
+\left\{
+\begin{array}{ll}
+x_1^{(k+1)} = &
+  \only<1>{\frac{b_1-a_{12}x_2^{(k)}-a_{13}x_3^{(k)}}{a_{11}}}
+  \only<2->{\frac{4 -6x_2^{(k)} -7x_3^{(k)}}{15}}\\
+%
+x_2^{(k+1)} = &
+  \only<1>{\frac{b_2-a_{21}x_1^{(k)}-a_{23}x_3^{(k)}}{a_{22}}}
+  \only<2>{\frac{-8 -0x_1^{(k)} -2x_3^{(k)}}{-5}}
+  \only<3->{\frac{8  +2x_3^{(k)}}{5}}\\
+%
+x_3^{(k+1)} = &
+  \only<1>{\frac{b_3-a_{31}x_1^{(k)}-a_{32}x_2^{(k)}}{a_{33}}}
+  \only<2>{\frac{7 +1x_1^{(k)} -1x_2^{(k)}}{4}}
+  \only<3->{\frac{7 +x_1^{(k)} -x_2^{(k)}}{4}}
+\end{array}
+\right.
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.2a por Jacobi}
+De
+\[
+\left\{
+\begin{array}{ll}
+x_1^{(k+1)} = &\frac{4 -6x_2^{(k)} -7x_3^{(k)}}{15}\\
+%
+x_2^{(k+1)} = &\frac{8  +2x_3^{(k)}}{5}\\
+%
+x_3^{(k+1)} = &\frac{7 +x_1^{(k)} -x_2^{(k)}}{4}
+\end{array}
+\right.
+\]
+Montamos a tabela:
+\begin{center}
+\begin{tabular}{r|r|r|r|c}
+$k$ & $x_1^{(k)}$ & $x_2^{(k)}$ & $x_3^{(k)}$ & Parada\\
+\hline
+\hline
+$0$ & $0$ & $0$ & $0$ & --\\
+\hline
+\only<2->{$1$} & \only<2->{$0.2667$} & \only<2->{$1.6$} & \only<2->{$1.75$} & \only<2->{$1.75 \le 10^{-2} \lor k = 2$}\\
+\hline
+\only<3->{$2$} & \only<3->{$-1.19$} & \only<3->{$2.3$} & \only<3->{$1.417$} & \only<3->{$1.4567 \le 10^{-2} \lor \alert<4>{k = 2}$}\\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.2a por Gauss-Seidel}
+No método de Gauss-Seidel, aplicamos a fórmula
+
+\[
+x_i^{(k+1)} = \frac{b_i %
+  - \sum_{j = 1}^{i-1}a_{ij}x_j^{(k+1)}%
+  - \sum_{j = i+1}^{n}a_{ij}x_j^{(k)}%
+  }{a_{ii}}
+\]
+
+Até que a condição de parada seja satisfeita. 
+%
+Para uma matriz 3x3, temos:
+\[
+\left\{
+\begin{array}{ll}
+x_1^{(k+1)} = &\frac{b_1-a_{12}x_2^{(k)}-a_{13}x_3^{(k)}}{a_{11}}\\
+x_2^{(k+1)} = &\frac{b_2-a_{21}x_1^{(k+1)}-a_{23}x_3^{(k)}}{a_{22}}\\
+x_3^{(k+1)} = &\frac{b_3-a_{31}x_1^{(k+1)}-a_{32}x_2^{(k+1)}}{a_{33}}
+\end{array}
+\right.
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.2a por Gauss-Seidel}
+Aplicando para a matriz
+\[
+\begin{pmatrix}
+15 & 6 & 7 & | & 4\\
+0 & -5 & 2 & | & -8\\
+-1 & 1 & 4 & | & 7
+\end{pmatrix}
+\]
+Temos:
+\[
+\left\{
+\begin{array}{ll}
+x_1^{(k+1)} = &
+  \only<1>{\frac{b_1-a_{12}x_2^{(k)}-a_{13}x_3^{(k)}}{a_{11}}}
+  \only<2->{\frac{4 -6x_2^{(k)} -7x_3^{(k)}}{15}}\\
+%
+x_2^{(k+1)} = &
+  \only<1>{\frac{b_2-a_{21}x_1^{(k+1)}-a_{23}x_3^{(k)}}{a_{22}}}
+  \only<2>{\frac{-8 -0x_1^{(k+1)} -2x_3^{(k)}}{-5}}
+  \only<3->{\frac{8  +2x_3^{(k)}}{5}}\\
+%
+x_3^{(k+1)} = &
+  \only<1>{\frac{b_3-a_{31}x_1^{(k+1)}-a_{32}x_2^{(k+1)}}{a_{33}}}
+  \only<2>{\frac{7 +1x_1^{(k+1)} -1x_2^{(k+1)}}{-1}}
+  \only<3->{-7 -x_1^{(k+1)} +x_2^{(k+1)}}
+\end{array}
+\right.
+\]
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Questão 3.2a por Gauss-Seidel}
+De 
+\[
+\left\{
+\begin{array}{ll}
+x_1^{(k+1)} = &\frac{4 -6x_2^{(k)} -7x_3^{(k)}}{15}\\
+%
+x_2^{(k+1)} = &\frac{8  +2x_3^{(k)}}{5}\\
+%
+x_3^{(k+1)} = &-7 -x_1^{(k+1)} +x_2^{(k+1)}
+\end{array}
+\right.
+\]
+
+Montamos uma tabela
+\begin{center}
+\begin{tabular}{r|r|r|r|c}
+$k$ & $x_1^{(k)}$ & $x_2^{(k)}$ & $x_3^{(k)}$ & Parada\\
+\hline
+\hline
+$0$ & $0$ & $0$ & $0$ & --\\
+\hline
+\only<2->{$1$} & \only<2->{$0.2667$} & \only<2->{$1.6$} & \only<2->{$1.417$} & \only<2->{$1.6 \le 10^{-2} \lor k = 2$}\\
+\hline
+\only<3->{$2$} & \only<3->{$-1.0346$} & \only<3->{$2.1668$} & \only<3->{$0.8775$} & \only<3->{$1.3013 \le 10^{-2} \lor \alert<4>{k = 2}$}\\
+\hline
+\end{tabular}
+\end{center}
+\onslide<5>{
+Por Gauss-Seidel, $x =
+\begin{pmatrix}
+-1.0346 & 2.1668 & 0.8775
+\end{pmatrix}%
+^T$.
+Por Jacobi, $x =
+\begin{pmatrix}
+-1.19 & 2.3 & 1.417
+\end{pmatrix}%
+^T$.}
+\end{frame}

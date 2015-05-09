@@ -1,0 +1,14 @@
+#TeXlipse project settings
+#Sat May 09 17:58:25 BRT 2015
+markTmpDer=true
+builderNum=2
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=main.tex
+outputFile=aula.pdf
+langSpell=en
+markDer=true
+srcDir=

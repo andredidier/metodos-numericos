@@ -1,0 +1,14 @@
+Este projeto contém todas as apresentações de curso de cálculo numérico para alunos de graduação.
+
+O projeto tem um arquivo .tex para cada aula e as aulas são agrupadas no arquivo main.tex.
+
+Por exemplo, a aula 7 sobre exercícios de zeros de funções fica no arquivo exercicios-zeros-funcoes.tex e é referenciada no main.tex da seguinte forma: 
+
+\lecture[Aula 7]{Exercícios sobre zeros de funções}{aula07}
+\input{exercicios-zeros-funcoes}
+
+Onde "Aula 7" é o título curto da aula, "Exercícios sobre zeros de funções" é o título longo e "aula07" é a referência à aula.
+
+Se desejar gerar o PDF para apenas uma aula específica (ex.: aula12), deve descomentar a seguinte linha no main.tex e preencher com o valor da referência à aula para a qual deseja gerar o PDF:
+
+\includeonlylecture{aula12}
