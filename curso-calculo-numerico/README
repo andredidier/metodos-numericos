@@ -12,3 +12,6 @@ Onde "Aula 7" é o título curto da aula, "Exercícios sobre zeros de funções" é o 
 Se desejar gerar o PDF para apenas uma aula específica (ex.: aula12), deve descomentar a seguinte linha no main.tex e preencher com o valor da referência à aula para a qual deseja gerar o PDF:
 
 \includeonlylecture{aula12}
+
+Para usar o layout de apresentação do CIn, é preciso baixar e instalar o projeto cin-beamer-template, conforme instruções no próprio site:
+https://sourceforge.net/p/beamerthemecin/wiki/Home/
