@@ -258,13 +258,16 @@ De forma mais sintética:
 Considere as taxas de inflação no período de janeiro a setembro de um certo ano dadas pela tabela abaixo. Faça uma previsão para os meses de outubro a dezembro desse mesmo ano considerando que uma reta é o tipo de curva que melhor representa esse fenômeno.
 
 \begin{center}
-\begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
 Mês & Jan & Fev & Mar & Abr & Mai & Jun & Jul & Ago & Set\\
 \hline
-Inflação & 1,3 & 1,8 & 2,2 & 0,4 & 1,1 & 3,0 & 1,1 & 0,8 & 0,1
+Inflação & 1,3 & 1,8 & 2,2 & 0,4 & 1,1 & 3,0 & 1,1 & 0,8 & 0,1\\
+\hline
 \end{tabular}
 \end{center}
 
+\onslide<2->{
 O que se quer é encontrar a reta que melhor se ajusta à tabela. Logo:
 \[
 P\left(\x\right) = \sum_{j=0}^1 a_j \G_j\left(x\right) = 
@@ -275,7 +278,7 @@ ou ainda,
 \[
 P \left(\x\right) = a_0 + a_1 x
 \]
-
+}
 \end{frame}
 
 \begin{frame}
@@ -353,7 +356,7 @@ Chegamos ao sistema:
 45 a_0 + 285 a_1 &= 51,6
 \end{cases}
 \]
-Cuja solução é: $a_0 = 1,928$ e $a_1 = -0,123$, logo $P\left(\x_i\right) = 1,928 - 0,123x$
+Cuja solução é: $a_0 = 1,928$ e $a_1 = -0,123$, logo $P\left(\x\right) = 1,928 - 0,123x$
 }
 \end{frame}
 
