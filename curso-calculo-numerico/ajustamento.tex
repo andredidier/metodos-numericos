@@ -41,7 +41,7 @@ $\f\left(\x_i\right)$ & $\f\left(\x_0\right)$ & $\f\left(\x_1\right)$ & \ldots &
 \end{frame}
 
 \begin{frame}
-\frametitle{Introdução}
+\frametitle{Aplicações}
 
 \begin{itemize}[<+->]
   \item Previsão para o estoque de um determinado produto em função do histórico de sua demanda
@@ -94,6 +94,11 @@ $\G_0\left(\x\right), \G_1\left(\x\right), \ldots, \G_m\left(\x\right) $, contí
       \begin{tikzpicture}[global scale=0.7]
       
       \draw plot[mark=*,only marks, xshift=3cm, yshift=3cm] file {ajustamento-dados1.txt};
+      \onslide<2->{%
+      \draw[domain=-1:1, smooth, variable=\x, xshift=3cm, yshift=3cm] plot ({\x},{2*\x*\x});
+      \node[right] at (4,5) {$\f\left(\x\right) = 2\x^2$};
+      }
+      
       \draw[->] (0,3) -- coordinate (x axis mid) (6,3) node[right] {$\x$};
       \draw[->] (3,0) -- coordinate (y axis mid) (3,6) node[above] {$\f\left(\x\right) $};
       \foreach \x in {-1,0,1}
@@ -128,9 +133,11 @@ $\G_0\left(\x\right), \G_1\left(\x\right), \ldots, \G_m\left(\x\right) $, contí
       
     \end{axis}
 
+    \onslide<2->{%
     \draw [decorate, decoration={brace, amplitude=2pt, mirror}, xshift=13pt, yshift=-5pt] (3,3.2) -- (3,3.7) node [midway,xshift=55pt] {%
     $R\left(\x_i\right) = P\left(\x_i\right) - \f\left(\x_i\right)$
     };
+    }
     
     \onslide<2->{\draw (5,5) node {Objetivo: tornar os resíduos $R\left(\x_i\right) mínimos$};}
     \end{tikzpicture}
@@ -188,7 +195,7 @@ $\G_0\left(\x\right), \G_1\left(\x\right), \ldots, \G_m\left(\x\right) $, contí
 \frametitle{Método dos Mínimos Quadrados}
 
 \begin{itemize}
-  \item Queremos, portanto, encontrar o par $\left(a_0, a_1\right)$ que minimize a soma do quadrado dos resíduos: $\min \varphi\left(a_0,a_1,\ldots,a_m\right) = \sum_{i=0}^{n}R^2\left(\x_i\right)$
+  \item Queremos, portanto, encontrar os valores $\left(a_0, a_1, \ldots, a_m\right)$ que minimizem a soma do quadrado dos resíduos: $\min \varphi\left(a_0,a_1,\ldots,a_m\right) = \sum_{i=0}^{n}R^2\left(\x_i\right)$
   \item Então, temos que:
 \begin{align}
 \frac{\partial \varphi}{\partial a_j} &= 0,\, j = 0,1,2,\ldots,m\label{eq:mmq_partial_1}\\
