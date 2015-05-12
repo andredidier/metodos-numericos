@@ -28,6 +28,21 @@
 \usepackage{cleveref}
 \usepackage{amsmath}
 \usepackage{pifont}
+\usepackage{multicol}
+\usepackage{pgfplots}
+\usepackage{tikz}
+
+\usetikzlibrary{arrows,trees,positioning,circuits.logic.US,shapes,decorations}
+
+\tikzset{
+  >=stealth',
+  edge from parent path={(\tikzparentnode.south) -- ++(0,-0.95cm)
+      -| (\tikzchildnode.north)},
+  global scale/.style={
+    scale=#1,
+    every node/.style={scale=#1}
+  },
+}
 
 \makeatletter
 \newcommand{\footnoteref}[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
@@ -41,6 +56,8 @@
 \newcommand{\machinenumber}[2]{#1 \cdot 10^{#2}}
 \newcommand{\machine}[4]{\mathrm{F}\left(#1,#2,#3,#4\right)}
 \def\ok{\checkmark}
+\def\alrd{Andr\'{e} L. R. Didier}
+\DeclareMathOperator{\sen}{\text{sen}}
 
 \def\arraystretch{1.2}
 \renewcommand{\tabcolsep}{1pt}
@@ -54,7 +71,11 @@
 % - Use the \inst{?} command only if the authors have different
 %   affiliation.
 %\author{F.~Author\inst{1} \and S.~Another\inst{2}}
-\author{André Didier \and Rafael Mesquita \and Adalberto Júnior \and Renato Vimieiro}
+\author{%
+\alrd \and \\%
+Adalberto Júnior \and \\%
+Rafael Mesquita \and \\%
+Renato Vimieiro}
 
 % - Use the \inst command only if there are several affiliations.
 % - Keep it simple, no one is interested in your street address.
@@ -104,7 +125,7 @@ UFPE
 
 %\beamerdefaultoverlayspecification{<+->}
 
-\includeonlylecture{aula13}
+\includeonlylecture{aula12}
 
 \begin{document}
 

@@ -398,7 +398,7 @@ Nos métodos iterativos transformamos o problema $Ax = b$ em $x = Bx + c$.
 No método de Jacobi, aplicamos a fórmula
 
 \[
-x_i^{(k+1)} = \frac{b_i - \sum_{j = 1, j \ne i}^{n}a_{ij}x_j^{(k)}}{a_{ii}}
+x_i^{(k+1)} = \frac{b_i - \sum_{\substack{j = 1\\j \ne i}}^{n}a_{ij}x_j^{(k)}}{a_{ii}}
 \]
 
 Até que a condição de parada seja satisfeita. 

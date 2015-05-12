@@ -39,3 +39,131 @@ $\f\left(\x_i\right)$ & $\f\left(\x_0\right)$ & $\f\left(\x_1\right)$ & \ldots &
 \end{itemize}
 
 \end{frame}
+
+\begin{frame}
+\frametitle{Introdução}
+
+\begin{itemize}[<+->]
+  \item Previsão para o estoque de um determinado produto em função do histórico de sua demanda
+
+  \item Previsão de inflação, consumo energético, dados polucionais etc.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ajustamento de curvas}
+
+\begin{itemize}
+  \item Definição: o problema de ajuste de curvas no caso em que temos um tabelamento de pontos $\left(\x_0, \f\left(\x_0\right)\right), \left(\x_1, \f\left(\x_1\right) \right), \ldots, \left(\x_n, \f\left(\x_n\right) \right) $, com $\x_0, \x_1, \ldots, \x_n \in [a,b]$, consiste em:
+  
+  \item Escolhidas $m+1$ funções $g_0\left(\x\right), g_1\left(\x\right), \ldots, g_m\left(\x\right) $, contínuas em $[a,b]$, obter $m+1$ constantes $a_0, a_1, \ldots, a_m$, tais que a função $P\left(\x \right) = a_0 g_0\left(\x\right) + a_1 g_1 \left(\x\right) + \ldots + a_m g_m \left(\x\right) $ se aproxime ao máximo de $\f\left(\x\right) $
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ajustamento de curvas}
+
+\begin{itemize}
+  \item Temos uma combinação linear de funções elementares
+  \item $P\left(\x\right) = \sum_{j=0}^m a_j \times G_j \left(x\right) $
+    \begin{itemize}
+      \item $a_j$: coeficientes a serem ajustados
+      \item $G_j$: funções conhecidas ($1$, $\x$, $\sen x$, $\ln x$)
+    \end{itemize}
+  \item Desejamos escolher a função $P\left(\x\right)$ que melhor represente o tabelamento utilizado
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ajustamento de curvas}
+
+\begin{itemize}
+  \item Como escolher as funções contínuas $g_0\left(\x\right), g_1\left(\x\right), \ldots, g_m\left(\x\right) $?
+  \item Uma mandeira simples consiste em analisar os pontos conhecidos em um gráfico cartesiano
+  \item Ex.:
+    \begin{multicols}{2}
+      \begin{itemize}
+        \item $g_1\left(\x\right) = x^2$
+        \item Procuramos o valor de a em: $\varphi \left(\x\right) = a\x^2$
+        \item Ou seja, qual a parábola com equação $a\x^2$ melhor se ajusta aos dados?
+        \item<2-> Esta escolha nem sempre é simples e não será objeto de estudo neste curso. 
+      \end{itemize}    
+      \columnbreak
+      \begin{tikzpicture}[global scale=0.7]
+      
+      \draw plot[mark=*,only marks, xshift=3cm, yshift=3cm] file {ajustamento-dados1.txt};
+      \draw[->] (0,3) -- coordinate (x axis mid) (6,3) node[right] {$\x$};
+      \draw[->] (3,0) -- coordinate (y axis mid) (3,6) node[above] {$\f\left(\x\right) $};
+      \foreach \x in {-1,0,1}
+        \draw [xshift=3cm,yshift=3cm](\x,1pt) -- (\x,-3pt)
+            node[anchor=north] {$\x$};
+      \foreach \y/\ytext in {-2,-1,,1,2}
+          \draw[xshift=3cm,yshift=3cm] (1pt,\y) -- (-3pt,\y) node[anchor=east] {$\ytext$};
+          
+      \end{tikzpicture}
+    \end{multicols}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Ajustamento de curvas}
+
+\begin{itemize}
+  \item O que significa obter uma curva que melhor se ajuste, ou que mais se aproxime de uma função $\f\left(\x\right)$ desconhecida?
+  \item Ideia geométrica:\\
+    \begin{tikzpicture}[global scale=0.7]
+    
+    %\draw plot[mark=*,only marks, xshift=0cm, yshift=0cm] file {ajustamento-dados2.txt};
+    %\draw plot[xshift=0cm, yshift=0cm] file {ajustamento-dados3.txt};
+    %\draw[->] (0,0) -- coordinate (x axis mid) (6,0) node[right] {$\x$};
+    %\draw[->] (0,0) -- coordinate (y axis mid) (0,6) node[above] {$y $};
+    \begin{axis}[%
+      xmin=0, xmax=6, ymin=0, ymax=6, axis x line=center, axis y line=center
+    ]
+      \addplot plot[mark=*,only marks, xshift=0cm, yshift=0cm] file {ajustamento-dados2.txt};
+      \addplot plot[mark=none, xshift=0cm, yshift=0cm] file {ajustamento-dados3.txt};
+      
+    \end{axis}
+
+    \draw [decorate, decoration={brace, amplitude=2pt, mirror}, xshift=15pt, yshift=-3pt] (3,3.2) -- (3,3.7) node [black,midway,xshift=55pt] {%
+    $R\left(\x_i\right) = P\left(\x_i\right) - \f\left(\x_i\right)$
+    };
+    
+    \onslide<2->{\draw (5,5) node {Objetivo: tornar os resíduos $R\left(\x_i\right) mínimos$};}
+    \end{tikzpicture}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ajustamento de curvas}
+
+\begin{itemize}
+  \item O que significa tornar os resíduos $R\left(\x_i\right)$ mínimos?
+  \item $\sum_{i=0}^n R\left(\x_i\right) = 0$ ?
+    \begin{itemize}
+      \item Não! A curva pode ter resíduos positivos e negativos grandes em valores absolutos, mas que somados se aproximem bastante de zero. Escolha inadequada.
+    \end{itemize}
+  \item $\sum_{i=0}^n \left|R\left(\x_i\right)\right| = 0$ ?
+    \begin{itemize}
+      \item Não! Função valor absoluto não é derivável em seu mínimo. 
+    \end{itemize}  
+  \item $\sum_{i=0}^n R^2\left(\x_i\right) = 0$ ?
+    \begin{itemize}
+      \item Sim! Problemas anteriores são resolvidos
+      \item Buscaremos a função do tipo escolhido que produza a menor soma dos quadrados dos resíduos
+      \item Método dos mínimos quadrados (MMQ)
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Método dos mínimos quadrados}
+
+\begin{itemize}
+  \item Função $\varphi$ associa a função escolhida para representar a tabela dada à soma dos quadrados dos resíduos produzidos por ela
+  \item Procuramos o mínimo de\\
+  %
+  $\varphi\left(a_0,a_1,\ldots,a_m\right) = \displaystyle\sum_{i=0}^{n}R^2\left(\x_i\right)$
+\end{itemize}
+\end{frame}
