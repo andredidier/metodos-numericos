@@ -164,6 +164,66 @@ $\f\left(\x_i\right)$ & $\f\left(\x_0\right)$ & $\f\left(\x_1\right)$ & \ldots &
   \item Função $\varphi$ associa a função escolhida para representar a tabela dada à soma dos quadrados dos resíduos produzidos por ela
   \item Procuramos o mínimo de\\
   %
-  $\varphi\left(a_0,a_1,\ldots,a_m\right) = \displaystyle\sum_{i=0}^{n}R^2\left(\x_i\right)$
+  \[\varphi\left(a_0,a_1,\ldots,a_m\right) = \sum_{i=0}^{n}R^2\left(\x_i\right)\]
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Método dos Mínimos Quadrados}
+
+\begin{itemize}
+  \item Para o caso específico de uma reta teremos:
+    \begin{itemize}
+      \item $P\left(\x\right) = a_0 G_0 \left(\x\right) + a_1 G_1 \left(\x\right)$,
+      \item onde $G_0 = 1$ e $G_1 = x$
+    \end{itemize}
+  \item Teremos para cada possível par $\left(a_0, a_1\right)$ uma reta $P_0 \left(\x\right) = a_0 + a_1 \x$ distinta
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Método dos Mínimos Quadrados}
+
+\begin{itemize}
+  \item Queremos, portanto, encontrar o par $\left(a_0, a_1\right)$ que minimize a soma do quadrado dos resíduos: $\min \varphi\left(a_0,a_1,\ldots,a_m\right) = \sum_{i=0}^{n}R^2\left(\x_i\right)$
+  \item Então, temos que:
+\begin{align}
+\frac{\partial \varphi}{\partial a_j} &= 0,\, j = 0,1,2,\ldots,m\label{eq:mmq_partial_1}\\
+%
+\frac{\partial \varphi}{\partial a_j} = %
+\frac{\partial}{\partial a_j} \sum_{i=0}^{n} R^2 \left(\x_i\right) = %
+\sum_{i=0}^{n} \frac{\partial R^2 \left(\x_i\right)}{\partial a_j} &= %
+2 \sum_{i=0}^{n} R\left(\x_i\right) \frac{\partial R \left(\x_i\right)}{\partial a_j}\label{eq:mmq_partial_2}
+\end{align}
+%
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Método dos Mínimos Quadrados}
+
+Como
+{
+\footnotesize
+\begin{equation}
+\label{eq:mmq_partial_3}
+R\left(x_i\right) = P\left(x_i\right) - \f\left(x_i\right) = a_0 g_0 \left(\x_i\right) + \ldots + a_j g_j \left(x_i\right) + \ldots + a_m g_m \left(x_i\right) - \f \left(\x_i\right)
+\end{equation}}%
+temos que:\\
+$\frac{\partial R \left(\x_i\right)}{\partial a_j} = g_j \left(\x_i\right)$, logo de \cref{eq:mmq_partial_2} temos que:
+\[
+\frac{\partial \varphi}{\partial a_j} = 2 \sum_{i=0}^{n} R\left(\x_i\right) g_j \left(\x_i\right), j = 0,1,\ldots,m
+\]
+Portanto, considerando que $\frac{\partial \varphi}{\partial a_j} = 0$ (\cref{eq:mmq_partial_1}), temos o sistema normal dado por:
+\[
+\sum_{i=0}^{n} R\left(\x_i\right) g_j \left(\x_i\right) = 0, j = 0, 1, \ldots, m
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Método dos Mínimos Quadrados}
+
+Substituindo $R\left(\x_i\right)$ conforme \cref{eq:mmq_partial_3}, o sistema normal pode ser reescrito como
+\[
+\]
 \end{frame}
