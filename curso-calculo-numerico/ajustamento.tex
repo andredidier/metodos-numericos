@@ -54,9 +54,11 @@ $\f\left(\x_i\right)$ & $\f\left(\x_0\right)$ & $\f\left(\x_1\right)$ & \ldots &
 \frametitle{Ajustamento de curvas}
 
 \begin{itemize}
-  \item Definição: o problema de ajuste de curvas no caso em que temos um tabelamento de pontos $\left(\x_0, \f\left(\x_0\right)\right), \left(\x_1, \f\left(\x_1\right) \right), \ldots, \left(\x_n, \f\left(\x_n\right) \right) $, com $\x_0, \x_1, \ldots, \x_n \in [a,b]$, consiste em:
+  \item Definição: o problema de ajuste de curvas no caso em que temos um tabelamento de pontos 
+$\left(\x_0, \f\left(\x_0\right)\right), \left(\x_1, \f\left(\x_1\right) \right), \ldots, \left(\x_n, \f\left(\x_n\right) \right) $, com $\x_0, \x_1, \ldots, \x_n \in [a,b]$, consiste em:
   
-  \item Escolhidas $m+1$ funções $g_0\left(\x\right), g_1\left(\x\right), \ldots, g_m\left(\x\right) $, contínuas em $[a,b]$, obter $m+1$ constantes $a_0, a_1, \ldots, a_m$, tais que a função $P\left(\x \right) = a_0 g_0\left(\x\right) + a_1 g_1 \left(\x\right) + \ldots + a_m g_m \left(\x\right) $ se aproxime ao máximo de $\f\left(\x\right) $
+  \item Escolhidas $m+1$ funções 
+$\G_0\left(\x\right), \G_1\left(\x\right), \ldots, \G_m\left(\x\right) $, contínuas em $[a,b]$, obter $m+1$ constantes $a_0, a_1, \ldots, a_m$, tais que a função $P\left(\x \right) = a_0 \G_0\left(\x\right) + a_1 \G_1 \left(\x\right) + \ldots + a_m \G_m \left(\x\right) $ se aproxime ao máximo de $\f\left(\x\right) $
 \end{itemize}
 \end{frame}
 
@@ -65,10 +67,10 @@ $\f\left(\x_i\right)$ & $\f\left(\x_0\right)$ & $\f\left(\x_1\right)$ & \ldots &
 
 \begin{itemize}
   \item Temos uma combinação linear de funções elementares
-  \item $P\left(\x\right) = \sum_{j=0}^m a_j \times G_j \left(x\right) $
+  \item $P\left(\x\right) = \sum_{j=0}^m a_j \G_j \left(x\right) $
     \begin{itemize}
       \item $a_j$: coeficientes a serem ajustados
-      \item $G_j$: funções conhecidas ($1$, $\x$, $\sen x$, $\ln x$)
+      \item $\G_j$: funções conhecidas ($1$, $\x$, $\sen x$, $\ln x$)
     \end{itemize}
   \item Desejamos escolher a função $P\left(\x\right)$ que melhor represente o tabelamento utilizado
 \end{itemize}
@@ -78,12 +80,12 @@ $\f\left(\x_i\right)$ & $\f\left(\x_0\right)$ & $\f\left(\x_1\right)$ & \ldots &
 \frametitle{Ajustamento de curvas}
 
 \begin{itemize}
-  \item Como escolher as funções contínuas $g_0\left(\x\right), g_1\left(\x\right), \ldots, g_m\left(\x\right) $?
+  \item Como escolher as funções contínuas $\G_0\left(\x\right), \G_1\left(\x\right), \ldots, \G_m\left(\x\right) $?
   \item Uma mandeira simples consiste em analisar os pontos conhecidos em um gráfico cartesiano
   \item Ex.:
     \begin{multicols}{2}
       \begin{itemize}
-        \item $g_1\left(\x\right) = x^2$
+        \item $\G_1\left(\x\right) = x^2$
         \item Procuramos o valor de a em: $\varphi \left(\x\right) = a\x^2$
         \item Ou seja, qual a parábola com equação $a\x^2$ melhor se ajusta aos dados?
         \item<2-> Esta escolha nem sempre é simples e não será objeto de estudo neste curso. 
@@ -126,7 +128,7 @@ $\f\left(\x_i\right)$ & $\f\left(\x_0\right)$ & $\f\left(\x_1\right)$ & \ldots &
       
     \end{axis}
 
-    \draw [decorate, decoration={brace, amplitude=2pt, mirror}, xshift=15pt, yshift=-3pt] (3,3.2) -- (3,3.7) node [black,midway,xshift=55pt] {%
+    \draw [decorate, decoration={brace, amplitude=2pt, mirror}, xshift=13pt, yshift=-5pt] (3,3.2) -- (3,3.7) node [midway,xshift=55pt] {%
     $R\left(\x_i\right) = P\left(\x_i\right) - \f\left(\x_i\right)$
     };
     
@@ -174,10 +176,11 @@ $\f\left(\x_i\right)$ & $\f\left(\x_0\right)$ & $\f\left(\x_1\right)$ & \ldots &
 \begin{itemize}
   \item Para o caso específico de uma reta teremos:
     \begin{itemize}
-      \item $P\left(\x\right) = a_0 G_0 \left(\x\right) + a_1 G_1 \left(\x\right)$,
-      \item onde $G_0 = 1$ e $G_1 = x$
+      \item $P\left(\x\right) = a_0 \G_0 \left(\x\right) + a_1 \G_1 \left(\x\right)$,
+      \item onde $\G_0 = 1$ e $\G_1 = x$
     \end{itemize}
   \item Teremos para cada possível par $\left(a_0, a_1\right)$ uma reta $P_0 \left(\x\right) = a_0 + a_1 \x$ distinta
+  \item Em uma delas a diferença da reta para a função $\f$ será mínima.
 \end{itemize}
 \end{frame}
 
@@ -207,16 +210,17 @@ Como
 \footnotesize
 \begin{equation}
 \label{eq:mmq_partial_3}
-R\left(x_i\right) = P\left(x_i\right) - \f\left(x_i\right) = a_0 g_0 \left(\x_i\right) + \ldots + a_j g_j \left(x_i\right) + \ldots + a_m g_m \left(x_i\right) - \f \left(\x_i\right)
+R\left(x_i\right) = P\left(x_i\right) - \f\left(x_i\right) =% 
+\alert<2>{a_0 \G_0 \left(\x_i\right) + \ldots + a_j \G_j \left(x_i\right) + \ldots + a_m \G_m \left(x_i\right) - \f \left(\x_i\right)}
 \end{equation}}%
 temos que:\\
-$\frac{\partial R \left(\x_i\right)}{\partial a_j} = g_j \left(\x_i\right)$, logo de \cref{eq:mmq_partial_2} temos que:
+$\frac{\partial R \left(\x_i\right)}{\partial a_j} = \G_j \left(\x_i\right)$, logo de \cref{eq:mmq_partial_2} temos que:
 \[
-\frac{\partial \varphi}{\partial a_j} = 2 \sum_{i=0}^{n} R\left(\x_i\right) g_j \left(\x_i\right), j = 0,1,\ldots,m
+\frac{\partial \varphi}{\partial a_j} = 2 \sum_{i=0}^{n} R\left(\x_i\right) \G_j \left(\x_i\right), j = 0,1,\ldots,m
 \]
 Portanto, considerando que $\frac{\partial \varphi}{\partial a_j} = 0$ (\cref{eq:mmq_partial_1}), temos o sistema normal dado por:
 \[
-\sum_{i=0}^{n} R\left(\x_i\right) g_j \left(\x_i\right) = 0, j = 0, 1, \ldots, m
+\sum_{i=0}^{n} \alert<2>{R\left(\x_i\right)} \G_j \left(\x_i\right) = 0, j = 0, 1, \ldots, m
 \]
 \end{frame}
 
@@ -224,6 +228,163 @@ Portanto, considerando que $\frac{\partial \varphi}{\partial a_j} = 0$ (\cref{eq
 \frametitle{Método dos Mínimos Quadrados}
 
 Substituindo $R\left(\x_i\right)$ conforme \cref{eq:mmq_partial_3}, o sistema normal pode ser reescrito como
+\begin{align*}
+&a_0 \sum_{i=0}^n \G_0\left(\x_i\right) \G_j\left(x_i\right) +
+a_1 \sum_{i=0}^n \G_1\left(\x_i\right) \G_j\left(x_i\right) + \ldots +\\
+%
+&a_m \sum_{i=0}^n \G_m\left(\x_i\right) \G_j\left(x_i\right) =
+\sum_{i=0}^n \f\left(\x_i\right) \G_j\left(x_i\right), j = 0,1,2,\ldots,m
+\end{align*}%
+
+De forma mais sintética:
 \[
+\sum_{k=0}^m a_k \sum_{i=0}^n \G_k\left(\x_i\right) \G_j\left(\x_i\right) = 
+\sum_ {i=0}^n \f \left(x_i\right) \G_j\left(\x_i\right), j = 0, 1, 2, \ldots, m
 \]
+
+\onslide<2->{Este sistema possui solução única e essa solução é o ponto de mínimo de $\varphi \left(a_0, a_1, \ldots, a_m\right)$}
+\end{frame}
+
+\begin{frame}
+\frametitle{MMQ -- Exemplo}
+
+Considere as taxas de inflação no período de janeiro a setembro de um certo ano dadas pela tabela abaixo. Faça uma previsão para os meses de outubro a dezembro desse mesmo ano considerando que uma reta é o tipo de curva que melhor representa esse fenômeno.
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+Mês & Jan & Fev & Mar & Abr & Mai & Jun & Jul & Ago & Set\\
+\hline
+Inflação & 1,3 & 1,8 & 2,2 & 0,4 & 1,1 & 3,0 & 1,1 & 0,8 & 0,1
+\end{tabular}
+\end{center}
+
+O que se quer é encontrar a reta que melhor se ajusta à tabela. Logo:
+\[
+P\left(\x\right) = \sum_{j=0}^1 a_j \G_j\left(x\right) = 
+a_0 \G_0 \left(\x\right) + a_1 \G_1 \left(x\right)
+\]
+onde $\G_0\left(x\right) = 1$ e $\G_1\left(\x\right) = \x$,
+ou ainda,
+\[
+P \left(\x\right) = a_0 + a_1 x
+\]
+
+\end{frame}
+
+\begin{frame}
+\frametitle{MMQ -- Exemplo}
+
+Para efeito de cálculos, temos: $jan = 1$, $fev = 2$ e assim por diante. Como $m=1$
+
+Da equação
+\[
+\sum_{k=0}^m a_k \sum_{i=0}^n \G_k\left(\x_i\right) \G_j\left(\x_i\right) = 
+\sum_ {i=0}^n \f \left(x_i\right) \G_j\left(\x_i\right), j = 0, 1, 2, \ldots, m
+\]
+
+Obtemos o sistema
+\begin{align*}
+\onslide<3->{
+a_0 \sum_{i=0}^n \G_0 \left(x_i\right) \G_0 \left(x_i\right) + 
+a_1 \sum_{i=0}^n \G_1 \left(x_i\right) \G_0 \left(x_i\right) &=
+\sum_{i=0}^n \f \left(x_i\right) \G_0 \left(x_i\right)} & \onslide<2->{j = 0}\\
+%
+\onslide<5->{a_0 \sum_{i=0}^n \G_0 \left(x_i\right) \G_1 \left(x_i\right) + 
+a_1 \sum_{i=0}^n \G_1 \left(x_i\right) \G_1 \left(x_i\right) &=
+\sum_{i=0}^n \f \left(x_i\right) \G_1 \left(x_i\right)} & \onslide<4->{j = 1}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{MMQ -- Exemplo}
+
+Calculando os coeficientes
+{
+\tiny
+\begin{center}
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+\hline
+$i$ & $\x_i$ & $\f\left(\x_i\right)$ & 
+  $\G_0\left(\x_i\right)$ &
+  $\G_1\left(\x_i\right)$ &
+  $\G_0^2\left(\x_i\right)$ &
+  $\G_1^2\left(\x_i\right)$ &
+  $\G_0\left(\x_i\right) \G_1\left(\x_i\right)$ &
+  $\f\left(\x_i\right) \G_0\left(\x_i\right)$ &
+  $\f\left(\x_i\right) \G_1\left(\x_i\right)$\\
+\hline
+0 & 1 & 1,3 & 1 & 1 & 1 & 1 & 1 & 1,3 & 1,3\\
+\hline
+1 & 2 & 1,8 & 1 & 2 & 1 & 4 & 2 & 1,8 & 3,6\\
+\hline
+2 & 3 & 2,2 & 1 & 3 & 1 & 9 & 3 & 2,2 & 6,6\\
+\hline
+3 & 4 & 0,4 & 1 & 4 & 1 & 16 & 4 & 0,4 & 1,6\\
+\hline
+4 & 5 & 1,1 & 1 & 5 & 1 & 25 & 5 & 1,1 & 5,5\\
+\hline
+5 & 6 & 3,0 & 1 & 6 & 1 & 36 & 6 & 3,0 & 18,0\\
+\hline
+6 & 7 & 1,1 & 1 & 7 & 1 & 49 & 7 & 1,1 & 7,7\\
+\hline
+7 & 8 & 0,8 & 1 & 8 & 1 & 64 & 8 & 0,8 & 6,4\\
+\hline
+8 & 9 & 0,1 & 1 & 9 & 1 & 81 & 9 & 0,1 & 0,9\\
+\hline 
+& & & & $\sum$ & 9 & 285 & 45 & 11,8 & 51,6\\
+\hline
+\end{tabular}
+\end{center}
+}
+
+\onslide<2->{
+Chegamos ao sistema:
+\[
+\begin{cases}
+9 a_0 + 45 a_1 &= 11,8\\
+45 a_0 + 285 a_1 &= 51,6
+\end{cases}
+\]
+Cuja solução é: $a_0 = 1,928$ e $a_1 = -0,123$, logo $P\left(\x_i\right) = 1,928 - 0,123x$
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{MMQ -- Exemplo}
+E respondendo à questão:
+
+\begin{tabular}{c|c|c}
+\hline
+Mês & ``equivalência'' $\Rightarrow x$ & Valor aprox. da inflação $P\left(x\right)$\\
+\hline
+outubro & 10 & 0,698 \\
+\hline
+novembro & 11 & 0,575 \\
+\hline
+dezembro & 12 & 0,452 \\
+\hline
+\end{tabular}
+\end{frame}
+
+\begin{frame}
+\frametitle{MMQ -- Exercício 4.1b}
+
+Determine $P \left(\x\right) = a \x^2 + b$ que melhor se ajuste à tabela abaixo:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$x_i$ & $1$ & $2$ & $3$ & $5$\\
+\hline
+$\f\left(x_i\right)$ & $1,2$ & $0,9$ & $3,1$ & $6,1$\\
+\hline 
+\end{tabular}
+\end{center}
+
+\onslide<2->{Reposta: $P\left(x\right) = 0,219 \x^2 + 0,691$}
+\end{frame}
+
+\begin{frame}
+\frametitle{Caso não linear}
 \end{frame}
