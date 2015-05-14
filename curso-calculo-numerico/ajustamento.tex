@@ -454,3 +454,165 @@ a_0' \sum_{i=0}^{n} \G_0\left(\x_i\right) \G_1\left(\x_i\right) +
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{Caso não linear}
+
+Precisamos encontrar cada um dos coeficientes utilizados no sistema anterior. Para isso, construímos a tabela abaixo.
+
+\footnotesize
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+$i$ & 
+  $\x_i$ & 
+  $\ln \left( \f \left(\x_i\right) \right)$ &
+  $\G_0 \left(\x_i\right)$ &
+  $\G_1 \left(\x_i\right)$ &
+  $\G_0^2 \left(\x_i\right)$ &
+  $\G_1^2 \left(\x_i\right)$ &
+  $\G_0 \left(\x_i\right) \G_1 \left(\x_i\right)$ &
+  $\ln \left(\f \left(\x_i\right) \right) \G_0 \left(\x_i\right)$ &
+  $\ln \left(\f \left(\x_i\right) \right) \G_1 \left(\x_i\right)$\\
+\hline
+$0$ & $1$  & $0,262$   & $1 $ & $1 $ & $1 $ & $1 $  & $1 $ & $0,262$ & $0,262$\\
+\hline
+$1$ & $2 $ & $0,588 $  & $1 $ & $2 $ & $1 $ & $4 $  & $2 $ & $0,588 $ & $1,176 $\\
+\hline
+$2$ & $3 $ & $0,788 $  & $1 $ & $3 $ & $1 $ & $9 $  & $3 $ & $0,788 $ & $2,364 $\\
+\hline
+$3$ & $4 $ & $-0,916 $ & $1 $ & $4 $ & $1 $ & $16 $ & $4 $ & $-0,916 $ & $-3,664 $\\
+\hline
+$4$ & $5 $ & $0,095 $  & $1 $ & $5 $ & $1 $ & $25 $ & $5 $ & $0,095 $ & $0,475 $\\
+\hline
+$5$ & $6 $ & $1,099 $  & $1 $ & $6 $ & $1 $ & $36 $ & $6 $ & $1,099 $ & $6,594 $\\
+\hline
+$6$ & $7 $ & $0,095 $  & $1 $ & $7 $ & $1 $ & $49 $ & $7 $ & $0,095 $ & $0,665 $\\
+\hline
+$7$ & $8 $ & $-0,223 $ & $1 $ & $8 $ & $1 $ & $64 $ & $8 $ & $-0,223 $ & $-1,784 $\\
+\hline
+$8$ & $9 $ & $-2,303 $ & $1 $ & $9 $ & $1 $ & $81 $ & $9 $ & $-2,303 $ & $-20,727 $\\
+\hline
+\onslide<2->{& & & & $\sum$ & $9 $ & $285 $ & $45 $ & $-0,515 $ & $-14,639 $}
+\end{tabular}
+\end{frame}
+
+\begin{frame}
+\frametitle{Caso não linear}
+
+\begin{itemize}
+  \item Logo, chegamos ao sistema
+\[
+\begin{cases}
+9 a_0' + 45 a_1 &= -0,515 \\
+45 a_0' + 285 a_1 &= -14,639
+\end{cases}
+\]
+  \item Cuja solução é $a_0' = 0,948$ e $a_1 = -0,201$, portanto $a_0' = \ln \left(a_0\right) \implies a_0 = e^{a_0'} = e^{0,948} = 2,581$
+  \item $P \left(\x\right) = a_0 e^{a_1 \x} \implies P \left(\x\right) = 2,581 e^{-0,201 \x}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exemplo 4.3 -- caso não linear}
+
+Determine $P\left(x\right)$ como uma função do segundo grau que admita raízes $1$ e $2$, que melhor se ajuste à tabela a seguir usando MMQ com três casa decimais.
+
+\begin{tabular}{c|c|c|c|c}
+$x_i$ & $-1$ & $0$ & $2$ & $3$\\
+\hline
+$\f \left(\x_i\right)$ & $-4,0$ & $-1,5$ & $0,5$ & $0,0$ 
+\end{tabular}
+
+\onslide<2->{%
+Vamos então fazer $\G_0 \left(x\right) = (\x-1)(\x-2)$, logo $P \left(\x\right) = a \left(\x-1\right) \left(\x-2\right) = a (\x^2 - 3\x + 2)$
+
+Desta forma, o sistema normal reduz-se a:
+\[
+a_0 \sum_{i=0}^{n} \G_0 \left(\x_i\right) \G_0 \left(x_i\right) = \sum_{i=0}^{n} \f \left(\x_i\right) \G_0 \left(x_i\right)
+\] 
+}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Exemplo 4.3 -- caso não linear}
+
+Montamos então a tabela:
+
+\begin{tabular}{c|c|c|c|c|c}
+$i$ & $\x_i$ & $\f \left(\x_i\right)$ & $\G_0 \left(\x_i\right)$ & $\G_0^2 \left(\x_i\right)$ & $\f \left(\x_i\right) \G_0 \left(\x_i\right)$\\
+\hline
+$0$ & $-1 $ & $-4,0 $ & $6,0 $ & $36,0 $ & $-24,0 $\\
+\hline
+$1$ & $0 $ & $-1,5 $ & $2,0 $ & $4,0 $ & $-3,0 $\\
+\hline
+$2$ & $2 $ & $0,5 $ & $0,0 $ & $0,0 $ & $0,0 $\\
+\hline
+$3$ & $3 $ & $0,0 $ & $2,0 $ & $4,0 $ & $0,0 $\\
+\hline
+$$ & $ $ & $ $ & $ \sum $ & $44,0 $ & $-27,0 $\\
+\end{tabular}
+
+Então, temos a equação $44 a = -27 \implies a = -0,614$, logo $P \left(\x\right) = -0,614 \left(\x^2 - 3 \x + 2\right) \implies P \left(\x\right) = -0,614 \x^2 + 1,842 x - 1,228$
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercícios 4.1 \{a,g,i\} }
+Usando o MMQ encontre a curva de cada uma das formas abaixo para a seguinte tabela:
+
+\begin{tabular}{c|c|c|c|c}
+$x_i$ & $1$ & $2$ & $3$ & $5$\\
+\hline
+$\f \left(\x_i\right)$ & $1,2$ & $0,9$ & $3,1$ & $6,1$\\
+\hline
+\end{tabular}
+
+\begin{align*}
+a) & P\left(\x\right) = a \x + b\\
+%
+g) & P\left(\x\right) = \frac{1}{a \x + b}\\
+%
+i) & P\left(\x\right) = a b^\x
+\end{align*}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercício 4.1i}
+\framesubtitle{$P\left(\x\right) = a b^x$}
+\scriptsize
+\begin{itemize}[<+->]
+  \item Precisamos linearizar $P \left(\x \right)$.
+  \item Fazendo $a_1 = \ln b$, portanto $b = e^{a_1}$, $P\left(\x \right) = ab^x = a \left(e^{a_1}\right)^\x = a e^{a_1\x}$
+  \item Aplicando o $\ln$ a $P \left(\x \right)$, temos: $\ln P\left(\x\right) = \ln \left(a e^{a_1\x}\right) = \ln a + a_1\x$
+  \item Fazendo $a_0 = \ln a$, vamos resolver o sistema para $\ln P \left(\x\right) = a_0 + a_1 x$, com $\G_0\left(\x\right) = 1$ e $\G_1 \left(\x\right) = x$
+  \item Montamos a tabela:
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+$i$ & 
+  $\x_i$ & 
+  $\ln \left( \f \left(\x_i\right) \right)$ &
+  $\G_0 \left(\x_i\right)$ &
+  $\G_1 \left(\x_i\right)$ &
+  $\G_0^2 \left(\x_i\right)$ &
+  $\G_1^2 \left(\x_i\right)$ &
+  $\G_0 \left(\x_i\right) \G_1 \left(\x_i\right)$ &
+  $\ln \left(\f \left(\x_i\right) \right) \G_0 \left(\x_i\right)$ &
+  $\ln \left(\f \left(\x_i\right) \right) \G_1 \left(\x_i\right)$\\
+\hline
+$0$ & $1$ & $\ln 1,2$ & $1$ & $1$ & $1$ & $1$  & $1$ & $\ln 1,2$ & $\ln 1,2$\\
+$1$ & $2$ & $\ln 0,9$ & $1$ & $2$ & $1$ & $4$  & $2$ & $\ln 0,9$ & $2 \ln 0,9$\\
+$2$ & $3$ & $\ln 3,1$ & $1$ & $3$ & $1$ & $9$  & $3$ & $\ln 3,1$ & $3 \ln 3,1$\\
+$3$ & $5$ & $\ln 6,1$ & $1$ & $5$ & $1$ & $25$ & $5$ & $\ln 6,1$ & $5 \ln 6,1$\\
+\hline
+& & & & $\sum$ & $4$ & $39$ & $11$ & $3,016$ & $12,405$  
+\end{tabular}
+  \item Obtemos o sistema:
+\[
+\begin{cases}
+4 a_0 + 11 a_1 &= 3,016\\
+%
+11 a_0 + 39 a_1 &= 12,405
+\end{cases}
+\]
+  \item Cuja solução é $a_0 = -0,538$ e $a_1 = 0,470$ e, portanto $a = e^{a_0} = 0,584$, $b = e^{a_1} = 1,600$ e $P\left(\x\right) = 0,584 \left(1,6\right)^\x$
+\end{itemize}
+
+\end{frame}
