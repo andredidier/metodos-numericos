@@ -576,14 +576,59 @@ i) & P\left(\x\right) = a b^\x
 \end{frame}
 
 \begin{frame}
+\frametitle{Exercício 4.1g}
+\framesubtitle{$P\left(\x\right) = \frac{1}{a\x + b}$}
+\scriptsize
+
+\begin{itemize}[<+->]
+  \item Precisamos linearizar $P \left(\x \right)$.
+  \item Aplicando a potência $-1$ a $P \left(\x \right)$, temos: $\left(P\left(\x\right)\right)^{-1} = \left(\frac{1}{a \x + b}\right)^{-1} = a \x + b$
+  \item Vamos resolver o sistema com $\G_0\left(\x\right) = 1$ e $\G_1 \left(\x\right) = x$
+  \item Montamos a tabela:
+\begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+$i$ & 
+  $\x_i$ & 
+  $\left( \f \left(\x_i\right) \right)^{-1}$ &
+  $\G_0 \left(\x_i\right)$ &
+  $\G_1 \left(\x_i\right)$ &
+  $\G_0^2 \left(\x_i\right)$ &
+  $\G_1^2 \left(\x_i\right)$ &
+  $\G_0 \left(\x_i\right) \G_1 \left(\x_i\right)$ &
+  $\left(\f \left(\x_i\right) \right)^{-1} \G_0 \left(\x_i\right)$ &
+  $\left(\f \left(\x_i\right) \right)^{-1} \G_1 \left(\x_i\right)$\\
+\hline
+$0$ & $1$ & $\frac{1}{1,2}$ & $1$ & $1$ & $1$ & $1$  & $1$ & $\frac{1}{1,2}$ & $\frac{1}{1,2}$\\
+\hline
+$1$ & $2$ & $\frac{1}{0,9}$ & $1$ & $2$ & $1$ & $4$  & $2$ & $\frac{1}{0,9}$ & $\frac{2}{0,9}$\\
+\hline
+$2$ & $3$ & $\frac{1}{3,1}$ & $1$ & $3$ & $1$ & $9$  & $3$ & $\frac{1}{3,1}$ & $\frac{3}{3,1}$\\
+\hline
+$3$ & $5$ & $\frac{1}{6,1}$ & $1$ & $5$ & $1$ & $25$ & $5$ & $\frac{1}{6,1}$ & $\frac{5}{6,1}$\\
+\hline
+& & & & $\sum$ & $4$ & $39$ & $11$ & $2,430$ & $4,841$  
+\end{tabular}
+  \item Obtemos o sistema:
+\[
+\begin{cases}
+4 a + 11 b &= 2,430\\
+%
+11 a + 39 b &= 4,841
+\end{cases}
+\]
+  \item Cuja solução é $a = 1,186$ e $b = -0,210$ e, portanto $P\left(\x\right) = \frac{1}{1,186 \x -0,210}$
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
 \frametitle{Exercício 4.1i}
 \framesubtitle{$P\left(\x\right) = a b^x$}
 \scriptsize
 \begin{itemize}[<+->]
   \item Precisamos linearizar $P \left(\x \right)$.
-  \item Fazendo $a_1 = \ln b$, portanto $b = e^{a_1}$, $P\left(\x \right) = ab^x = a \left(e^{a_1}\right)^\x = a e^{a_1\x}$
-  \item Aplicando o $\ln$ a $P \left(\x \right)$, temos: $\ln P\left(\x\right) = \ln \left(a e^{a_1\x}\right) = \ln a + a_1\x$
-  \item Fazendo $a_0 = \ln a$, vamos resolver o sistema para $\ln P \left(\x\right) = a_0 + a_1 x$, com $\G_0\left(\x\right) = 1$ e $\G_1 \left(\x\right) = x$
+  %\item Fazendo $a_1 = \ln b$, portanto $b = e^{a_1}$, $P\left(\x \right) = ab^x = a \left(e^{a_1}\right)^\x = a e^{a_1\x}$
+  \item Aplicando o $\ln$ a $P \left(\x \right)$, temos: $\ln P\left(\x\right) = \ln \left(a b ^ x\right) = \ln a + \x \ln b$
+  \item Fazendo $a_0 = \ln a$ e $a_1 = \ln b$, vamos resolver o sistema para $\ln P \left(\x\right) = a_0 + a_1 x$, com $\G_0\left(\x\right) = 1$ e $\G_1 \left(\x\right) = x$
   \item Montamos a tabela:
 \begin{tabular}{c|c|c|c|c|c|c|c|c|c}
 $i$ & 
@@ -598,8 +643,11 @@ $i$ &
   $\ln \left(\f \left(\x_i\right) \right) \G_1 \left(\x_i\right)$\\
 \hline
 $0$ & $1$ & $\ln 1,2$ & $1$ & $1$ & $1$ & $1$  & $1$ & $\ln 1,2$ & $\ln 1,2$\\
+\hline
 $1$ & $2$ & $\ln 0,9$ & $1$ & $2$ & $1$ & $4$  & $2$ & $\ln 0,9$ & $2 \ln 0,9$\\
+\hline
 $2$ & $3$ & $\ln 3,1$ & $1$ & $3$ & $1$ & $9$  & $3$ & $\ln 3,1$ & $3 \ln 3,1$\\
+\hline
 $3$ & $5$ & $\ln 6,1$ & $1$ & $5$ & $1$ & $25$ & $5$ & $\ln 6,1$ & $5 \ln 6,1$\\
 \hline
 & & & & $\sum$ & $4$ & $39$ & $11$ & $3,016$ & $12,405$  
