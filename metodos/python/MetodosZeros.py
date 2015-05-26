@@ -1,4 +1,5 @@
 from MaquinaPontoFlutuante import *
+from Metodos import *
 import math
 
 class TabelaBissecao:
@@ -17,7 +18,7 @@ class TabelaBissecao:
         self.fxi = fxi
         self.c = c
 
-class Bissecao:
+class Bissecao(MetodoIterativo):
     def executar(self, a, b, l, f):
         c = b - a
         x0 = (a + b) / 2
@@ -61,9 +62,6 @@ class Bissecao:
             self.tabela = self.criar_tabela(i, a, b)
             return tabela
     
-    def __call__(self, *args, **kwargs):
-        return self.executar(args[0], args[1], args[2], args[3])
-    
     def __init__(self, maquina, a, b, l, f):
         self.maquina = maquina
         self.a = NumeroMaquina(maquina, a, 0).numero_maquina()
@@ -71,8 +69,72 @@ class Bissecao:
         self.l = NumeroMaquina(maquina, l, 0).numero_maquina()
         self.f = f
 
+class IterativoGerador(MetodoIterativo):
+    def calcular_x_iteracao(self, x_anterior):
+        None
+        
+    def calcular_iteracao(self, anterior):
+        if anterior:
+            x_anterior = anterior["x"]
+            i = anterior["i"]
+        else:
+            x_anterior = self.x0
+            i = 0
+        x = self.calcular_x_iteracao(x_anterior)
+        valor_f = self.f(x_anterior)
+        erro_absoluto = abs(x - x_anterior)
+        return {"i": i+1, "x": x, "valor_f": valor_f,
+                "erro_absoluto": erro_absoluto}
+
+    def deve_parar(self):
+        i = self.iteracao["i"]
+        err = self.iteracao["erro_absoluto"]
+        valor_f = self.iteracao["valor_f"]
+        return self.parada(i, err, valor_f)
+
+    def __init__(self, maquina, x0, f, parada):
+        self.maquina = maquina
+        self.x0 = NumeroMaquina(maquina, x0, 0).numero_maquina()
+        self.f = f
+        self.parada = parada
+
+class Halley(IterativoGerador):
+    def calcular_x_iteracao(self, x_anterior):
+        valor_f = self.f(x_anterior)
+        valor_df = self.df(x_anterior)
+        valor_ddf = self.ddf(x_anterior)
+        numerador = self.dois * valor_f * valor_df
+        denominador1 = self.dois * (valor_df ** self.dois)
+        denominador2 = valor_f * valor_ddf
+        denominador = denominador1 - denominador2
+        return x_anterior - numerador / denominador
+    
+    
+    def __init__(self, maquina, x0, f, df, ddf, parada):
+        super().__init__(maquina, x0, f, parada)
+        self.maquina = maquina
+        self.df = df
+        self.ddf = ddf
+        self.dois = NumeroMaquina(maquina, 2, 0).numero_maquina()
+    
+ 
+class NewtonRaphson(IterativoGerador):
+    def calcular_x_iteracao(self, x_anterior):
+        valor_f = self.f(x_anterior)
+        valor_df = self.df(x_anterior)
+        return x_anterior - valor_f / valor_df
+
+    def __init__(self, maquina, x0, f, df, parada):
+        super().__init__(maquina, x0, f, parada)
+        self.df = df
 
 # Início dos testes
+def parada_geral(i, erro_absoluto, valor_f):
+    if i > 50:
+        return True
+    if erro_absoluto <= 0.000001 and valor_f <= 0.000001:
+        return True
+    
 # Exemplo 2.2 do livro (edição 3)
 def f22(m, x):
     a1 = NumeroMaquina(m, 2, 0)
@@ -89,3 +151,27 @@ for t in b1:
     print ("{}".format(t))
     x0 = t.xi
 print ("x_0 = {}".format(x0))
+
+# Método de Newton-Raphson
+def f24(x):
+    return x * NumeroMaquina(m2, math.log(x), 0) - \
+        NumeroMaquina(m2, 1, 0)
+def df24(x):
+    return NumeroMaquina(m2, math.log(x), 0) + NumeroMaquina(m2, 1, 0)
+
+def ddf24(x):
+    return NumeroMaquina(m2, 1, 0) / x
+
+n1 = NewtonRaphson(m2, 1.75, f24, df24, parada_geral)
+for t in n1:
+    print ("{}".format(t))
+    x0=t["x"]
+
+print ("x0 = {}".format(x0))
+
+n1 = Halley(m2, 1.75, f24, df24, ddf24, parada_geral)
+for t in n1:
+    print ("{}".format(t))
+    x0=t["x"]
+
+print ("x0 = {}".format(x0))
