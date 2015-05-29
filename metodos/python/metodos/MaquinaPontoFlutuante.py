@@ -107,6 +107,9 @@ class NumeroMaquina:
         self.m = Decimal(str(m))
         self.e = Decimal(str(e))
         self.maquina = maquina
+    
+    def mudar_maquina(self, nova_maquina):
+        return NumerMaquina(nova_maquina, self.m, self.e)
 
     def __decimal__(self):
         return self.m * (self.maquina.base ** self.e)
@@ -118,7 +121,8 @@ class NumeroMaquina:
         return int(self.__decimal__())
 
     def __format__(self, format_spec):
-        return self.mostrar_padrao()
+        format_spec_inner = "{{:{}}}".format(format_spec)
+        return format_spec_inner.format(self.mostrar_padrao())
 
     def mostrar_padrao(self):
         return "{} . {}^{}".format(self.m, self.maquina.base, self.e)
