@@ -31,6 +31,9 @@ def df24b(init_num, x):
     dois = init_num(2)
     return dois * (x ** (dois - init_num(1)))
 
+def f26(init_num, x):
+    return x * init_num(math.log(x)) - init_num(1)
+
 # Início dos testes
 def parada_geral(iteracao):
     i = iteracao["i"]
@@ -46,7 +49,9 @@ def parada_geral(iteracao):
 b1 = Bissecao(num_maq1, 0, 1, lambda x: f22(num_maq1, x))
 n1 = NewtonRaphson(num_maq1, 1.75, lambda x: f24(num_maq1, x), lambda x: df24(num_maq1, x))
 n2 = NewtonRaphson(num_maq1, 1.0, lambda x: f24b(num_maq1, x), lambda x: df24b(num_maq1, x))
+s1 = Secantes(num_maq1, 1.7, 1.8, lambda x: f26(num_maq1, x))
 
+print (b1)
 for t in b1:
     x = t["x"]
     i = t["i"]
@@ -62,6 +67,7 @@ for t in b1:
         if t["l"] <= 0.05:
             break
 
+print (n1)
 for t in n1:
     x = t["x"]
     i = t["i"] 
@@ -69,10 +75,20 @@ for t in n1:
     if "erro_absoluto" in t:
         if t["erro_absoluto"] <= 0.0001:
             break
-        
+
+print (n2)        
 for t in n2:
     x = t["x"]
     i = t["i"] 
+    print ("{:>3} | {:>15}".format(i, x))
+    if "erro_absoluto" in t:
+        if t["erro_absoluto"] <= 0.0001:
+            break
+
+print (s1)
+for t in s1:
+    x = t["x"]
+    i = t["i"]
     print ("{:>3} | {:>15}".format(i, x))
     if "erro_absoluto" in t:
         if t["erro_absoluto"] <= 0.0001:
