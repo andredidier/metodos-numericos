@@ -4,7 +4,7 @@
 %% template based on a template by Till Tantau
 %% this template is still evolving - it might differ in future releases!
 
-\documentclass{beamer}
+\documentclass[portuges]{beamer}
 
 
 \mode<presentation>
@@ -32,8 +32,13 @@
 \usepackage{pgfplots}
 \usepackage{tikz}
 \usepackage{icomma}
+\usepackage{calculo-numerico}
 
 \usetikzlibrary{arrows,trees,positioning,circuits.logic.US,shapes,decorations}
+
+\DeclareGraphicsExtensions{.png,.eps}
+%\DeclareGraphicsExtensions{.png}
+\graphicspath{{./figures/},{./}}
 
 \tikzset{
   >=stealth',
@@ -72,8 +77,9 @@
     % Second argument is singular, third is plural
     \crefname{equation}{eq.}{eqs.}
     \Crefname{equation}{Eq.}{Eqs.}
+    \crefname{enumi}{item}{itens}
+    \Crefname{enumi}{Item}{Itens}
 }
-
 
 \title{Métodos Numéricos}
 \subtitle{}
@@ -125,10 +131,20 @@ UFPE
 
 \AtBeginLecture
 {
+\section{\insertlecture}
 \title{\insertlecture}
 \subtitle{\insertshortlecture}
 \begin{frame}<beamer>
 \titlepage
+\end{frame}
+}
+
+\def\endlecture
+{
+\begin{frame}<beamer>{Continue estudando!}
+\begin{center}
+\href{http://www.cin.ufpe.br/~if215}{\includeautosizegraphics{if215}}
+\end{center}
 \end{frame}
 }
 
@@ -139,33 +155,61 @@ UFPE
 
 %NÃO DESCOMENTE A LINHA ABAIXO NO BRANCH MASTER. PARA USAR UMA AULA 
 %ESPECÍFICA, UTILIZE O BRANCH DA AULA. SE NÃO ESTIVER CRIADO AINDA, CRIE.
+
+%\includeonlylecture{aula01}
+%\includeonlylecture{aula01}
+%\includeonlylecture{aula02}
+%\includeonlylecture{aula03}
+%\includeonlylecture{aula04}
+%\includeonlylecture{aula05}
+%\includeonlylecture{aula06}
+%\includeonlylecture{aula07}
+%\includeonlylecture{aula08}
+%\includeonlylecture{aula09}
+%\includeonlylecture{aula10}
+%\includeonlylecture{aula11}
+%\includeonlylecture{aula12}
 %\includeonlylecture{aula13}
+\includeonlylecture{aula14}
 
 \begin{document}
 
 \lecture[Aula 1]{Apresentação da disciplina}{aula01}
+\endlecture
 
 \lecture[Aula 2]{Bases, erros e aritmética de ponto flutuante}{aula02}
+\endlecture
 
 \lecture[Aula 3]{Arredondamento e operações aritméticas}{aula03}
+\endlecture
 
 \lecture[Aula 4]{Aproximação inicial, método da bisseção e método das cordas}{aula04}
 \input{aproximacao-inicial}
+\endlecture
 
 \lecture[Aula 5]{Método iterativo linear e método de Newton}{aula05}
+\endlecture
 
 \lecture[Aula 6]{Método das secantes e critérios de parada}{aula06}
+\endlecture
 
 \lecture[Aula 7]{Exercícios sobre zeros de funções}{aula07}
 \input{exercicios-zeros-funcoes}
+\endlecture
 
 \lecture[Aula 8]{Sistema de equações lineares e método de eliminação de Gauss}{aula08}
+\endlecture
 
 \lecture[Aula 12]{Exercícios sobre sistemas de equações lineares}{aula12}
 \input{exercicios-equacoes-lineares}
 
 \lecture[Aula 13]{Ajustamento e método dos mínimos quadrados}{aula13}
 \input{ajustamento}
+\endlecture
+
+\lecture[Aula 14]{Interpolação -- Lagrange}{aula14}
+\input{interpolacao-lagrange}
+\endlecture
 
 %\begin{frame}
 %\frametitle{Outline}

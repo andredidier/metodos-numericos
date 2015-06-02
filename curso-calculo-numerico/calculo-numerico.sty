@@ -1,0 +1,23 @@
+%\RequirePackage{mathrsfs}
+
+
+\newcounter{lecturenumber}
+\newcommand{\indexedlecture}[3]{%
+\stepcounter{lecturenumber}
+\lecture[Aula \arabic{lecturenumber}]{#2}{#1}
+\input{#3}
+}
+
+
+\newcounter{exercisenumber}
+\newcommand{\indexedexercise}[3]{%
+\stepcounter{exercisenumber}
+\lecture[Exercício \arabic{exercisenumber}]{#2}{#1}
+\input{#3}
+}
+
+\newcommand{\includeautosizegraphics}[1]{%
+\includegraphics[height=0.8\textheight,width=\textwidth,keepaspectratio]{#1}%
+}
+
+\newcommand{\lagrange}[2]{\mathcal{L}_{#1}^{\left(#2\right)}}

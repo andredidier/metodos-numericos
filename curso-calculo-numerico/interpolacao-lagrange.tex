@@ -1,0 +1,469 @@
+\section{Interpolação}
+
+\subsection{Introdução}
+
+\begin{frame}{Pergunta}
+\begin{itemize}[<+->]
+  \item Em um dado problema, foram encontrados os seguintes pontos:
+\begin{tabular}{r|rrr}
+\bfseries $\x_i$ & \hspace{0.3cm} -1 & \hspace{0.3cm} 1 & \hspace{0.3cm} 2 \\
+\hline
+\bfseries $\f\left(\x_i\right)$ & -4 & -2 & -10 \\
+\end{tabular}
+  \item Como poderíamos estimar os valores de $\f\left(\x_i\right)$ para $x=0,5$? E para $1,2$? E $1,6$?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{O que é interpolação?}
+\begin{itemize}
+  \item Dado o tabelamento:\\
+\begin{tabular}{r|rrrr}
+\bfseries $\x_i$ & \hspace{0.3cm} $\x_0$ & \hspace{0.3cm} $\x_1$ & \hspace{0.3cm} \ldots & \hspace{0.3cm} $\x_n$ \\
+\hline
+\bfseries $\f\left(\x_i\right)$ & $\f\left(\x_0\right)$ & $\f\left(\x_1\right)$ & \ldots & $\f\left(\x_i\right)$ \\
+\end{tabular}
+  \item Como encontrar o valor de $\f$ para algum $\x$ entre $[x_0; x_n]$?
+  \begin{itemize}[<+->]
+    \item Se $\x$ pertence à tabela, ok.
+    \item E se $\x$ não pertence à tabela?
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpolação}
+
+\begin{itemize}[<+->]
+  \item Para resolver essa situação, determinaremos uma função $P$ que passe exatamente nesses pontos tabelados e a usaremos para calcular o valor aproximado de $\f$.
+  \item No nosso contexto, vamos aproximar $\f$ por um polinômio.
+  \item $P$ terá, portanto a forma:
+\[
+P\left(\x\right) = a_0 \x^m + a_1 \x^{m-1} + a_2 \x^{m-2} + \ldots + a_{m-1} \x + a_m
+\]
+\end{itemize}
+
+\end{frame}
+
+\subsubsection{Exemplo 1}
+
+\begin{frame}{Exemplo 1}
+\begin{itemize}[<+->]
+  \item Dados os pontos da tabelados abaixo, descreva o polinômio que passe exatamente pelos pontos tabelados\\
+\begin{tabular}{c|rr}
+\bfseries $\x_i$ & \hspace{0.2cm} 1 & \hspace{0.2cm} 2 \\
+\hline
+\bfseries $\f\left(\x_i\right)$ & 3 & 4 \\
+\end{tabular}
+  \item Uma reta é um polinômio?
+  \item Então podemos aproximar por uma reta\ldots\\
+\action<+->{
+\begin{minipage}{0.45\textwidth}
+\begin{tikzpicture}[global scale=0.7]
+\begin{axis}[%
+  xmin=-0.5, xmax=2.5, ymin=-0.5, ymax=4.5, axis x line=center, axis y line=center
+]
+  \addplot plot[mark=*,only marks, xshift=-0.5, yshift=-0.5] file {interpolacao-exemplo1-dados1.txt};
+  \addplot plot[mark=none, xshift=-0.5, yshift=-0.5] file {interpolacao-exemplo1-dados2.txt};
+  
+\end{axis}
+
+\end{tikzpicture}
+\end{minipage}
+}
+\begin{minipage}{0.45\textwidth}
+\begin{align*}
+\action<+->{\x - \x_0 &= m \left(y - y_0\right)}\\
+\action<+->{\x - \x_0 &= \frac{\x_1 - \x_0}{y_1 - y_0} \left(y - y_0\right)}\\
+\action<+->{\x - 1 &= \frac{2-1}{4-3} \left(y-3\right)}\\
+\action<+->{\x - 1 &= 1 \left(y-3\right)}\\
+\action<+->{y &= \x + 2}
+\end{align*}
+\end{minipage}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplo 1}
+\begin{itemize}
+  \item Há outras formas de aproximar os pontos tabelados por um polinômio\\
+\begin{minipage}{0.45\textwidth}
+\begin{tikzpicture}[global scale=0.7]
+\begin{axis}[%
+  xmin=-0.5, xmax=2.5, ymin=-0.5, ymax=4.5, axis x line=center, axis y line=center
+]
+  \addplot plot[mark=*,only marks, xshift=-0.5, yshift=-0.5] file {interpolacao-exemplo1-dados1.txt};
+  \addplot plot[mark=none, xshift=-0.5, yshift=-0.5] file {interpolacao-exemplo1-dados3.txt};
+  
+\end{axis}
+
+\end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}\begin{tikzpicture}[global scale=0.7]
+\begin{axis}[%
+  xmin=-0.5, xmax=2.5, ymin=-0.5, ymax=4.5, axis x line=center, axis y line=center
+]
+  \addplot plot[mark=*,only marks, xshift=-0.5, yshift=-0.5] file {interpolacao-exemplo1-dados1.txt};
+  \addplot plot[mark=none, xshift=-0.5, yshift=-0.5] file {interpolacao-exemplo1-dados4.txt};
+  
+\end{axis}
+
+\end{tikzpicture}
+\end{minipage}
+  \item Entretanto\ldots
+\end{itemize}
+\end{frame}
+
+\subsection{Polinômio interpolador}
+
+\begin{frame}{Polinômio interpolador}{Definição 5.1}
+\begin{itemize}
+  \item Seja uma função $\f$\\ 
+\begin{tabular}{r|rrrr}
+\bfseries $\x_i$ & \hspace{0.3cm} $\x_0$ & \hspace{0.3cm} $\x_1$ & \hspace{0.3cm} \ldots & \hspace{0.3cm} $\x_n$ \\
+\hline
+\bfseries $\f\left(\x_i\right)$ & $\f\left(\x_0\right)$ & $\f\left(\x_1\right)$ & \ldots & $\f\left(\x_i\right)$ 
+\end{tabular}
+\\  
+%
+$P_n$ é o \emph{polinômio interpolador} de $\f$, relativamente aos pontos $x_0$, $x_1$, \ldots, $x_n$ se, e somente, se:
+  \begin{itemize}
+    \item $P_n\left(\x\right)$ é de grau não superior a $n$
+    \item $P_n\left(\x_i\right) = \f\left(x_i\right)$, $i = 0, 1, 2, \ldots, n$
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Voltando ao Exemplo 1}
+\begin{itemize}
+  \item Dados os pontos tabelados abaixo, descreva um polinômio que passe exatamente pelos pontos tabelados.\\
+\begin{tabular}{r|rr}
+\bfseries $\x_i$ & \hspace{0.2cm} 1 & \hspace{0.2cm} 2\\
+\hline
+\bfseries $\f\left(\x_i\right)$ & 3 & 4 \\
+\end{tabular}
+  \item A reta $y = \x + 2$ é o único polinômio interpolador que passa por $(1,3)$ e $(2,4)$.
+\end{itemize}
+\end{frame}
+
+\subsubsection{Exercício}
+\begin{frame}{Exercício}{Exemplo 5.1}
+\begin{itemize}
+  \item De uma função $\f$ obteve-se a tabela  a seguir. Encontre o polinômio interpolador dela, relativo aos pontos dados.\\
+\begin{tabular}{r|rrr}
+$\x_i$ & $-1$ & $1$ & $2$\\
+\hline
+$\f\left(\x_i\right)$ & $-4$ & $-2$ & $-10$
+\end{tabular}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Solução}{Exemplo 5.1}
+\begin{itemize}[<+->]
+  \item Neste caso, como $n=2$, temos a expectativa de que o grau de $P$ seja igual a 2. Logo,\\
+\action<+->{
+\[
+P\left(\x\right) = a_0 x^2 + a_1 x + a_2
+\]
+}
+  \item Daí o sistema:
+\[
+a_0 x^2 + a_1 x + a_2 = \f\left(\x_i\right), i = 0, 1, 2
+\]
+\begin{minipage}{0.45\textwidth}
+\action<+->{
+\[
+\begin{cases}
+a_0 - a_1 + a_2 &= -4 \\
+a_0 + a_1 + a_2 &= -2 \\
+4 a_0 + 2 a_1 + a_2 &= -10
+\end{cases}
+\]
+}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\action<+->{
+$a_0 = -3; a_1 = 1; a_2 = 0$
+}
+
+\action<+->{
+$P\left(\x\right) = -3 x^2  + x$
+}
+\end{minipage}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Comentários}
+Essa forma de aproximar funções (interpolação) só será desejável caso tenhamos certeza sobre a corretude dos valores da tabela, pois, de outra forma, não temos uma boa explicação para as perguntas: Por que a preocupação de passar por pontos duvidosos? Não seria melhor um ajustamento? [livro-texto]
+\end{frame}
+
+\begin{frame}{Pergunta?}
+\begin{itemize}[<+->]
+  \item Qual a diferença entre interpolação e ajustamento?
+  \item Ajustamento
+  \begin{itemize}[<+->]
+    \item Num ajustamento, nós construímos uma curva que se aproxima dos pontos, ou seja, se ajusta aos pontos
+    \item Podemos extrapolar a análise para além dos extremos
+  \end{itemize}
+  \item Interpolação
+  \begin{itemize}
+    \item Na interpolação, nós construímos uma curva que passa por todos os pontos.
+    \item Não podemos extrapolar a análise para além dos extremos.  Ajuda a estimar pontos entre $[x_0; x_n]$
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Voltando ao Exemplo 5.1}
+\begin{itemize}
+  \item De uma função $\f$ obteve-se a tabela  a seguir. Encontre o polinômio interpolador dela, relativo aos pontos dados.\\
+\begin{tabular}{r|rrr}
+$\x_i$ & $-1$ & $1$ & $2$\\
+\hline
+$\f\left(\x_i\right)$ & $-4$ & $-2$ & $-10$
+\end{tabular}
+  \item Nós utilizamos sistemas lineares para resolver o problema.
+  \item Existe outra forma?
+\end{itemize}
+\end{frame}
+
+\subsection{Lagrange}
+
+\begin{frame}{Polinômio interpolador de Lagrange}{Teorema 5.1}
+\begin{itemize}
+  \item Teorema 5.1 (existência e unicidade). Dada uma função $\f$\\
+%
+\begin{tabular}{r|rrrr}
+\bfseries $\x_i$ & \hspace{0.3cm} $\x_0$ & \hspace{0.3cm} $\x_1$ & \hspace{0.3cm} \ldots & \hspace{0.3cm} $\x_n$ \\
+\hline
+\bfseries $\f\left(\x_i\right)$ & $\f\left(\x_0\right)$ & $\f\left(\x_1\right)$ & \ldots & $\f\left(\x_i\right)$ 
+\end{tabular}\\
+%
+existe um único polinômio $P_n$ interpolador de $\f$, relativamente aos pontos $x_0, x_1, \ldots, x_n$. Ele é dado por:
+%
+\[
+P_n\left(\x\right) = \sum_{i=0}^{n} \f \left(\x_i\right) \lagrange{i}{n}\left(\x\right)
+\]
+%
+onde 
+\[
+\lagrange{i}{n}\left(\x\right) = \prod_{\substack{j=0\\j\ne i}}^{n} \frac{\x - \x_j}{\x_i - \x_j}
+\]
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exemplo}
+\begin{itemize}
+  \item Qual o polinômio interpolador de Lagrange para o Exemplo 5.1?\\
+\begin{tabular}{r|rrr}
+$\x_i$ & $-1$ & $1$ & $2$\\
+\hline
+$\f\left(\x_i\right)$ & $-4$ & $-2$ & $-10$
+\end{tabular}
+\begin{align*}
+P_n\left(\x\right) &= \sum_{i=0}^{n} \f \left(\x_i\right) \lagrange{i}{n}\left(\x\right)\\
+%
+P_2\left(\x\right) &= -4 \lagrange{0}{2} \left(\x\right) -2 \lagrange{1}{2} \left(\x\right) -10 \lagrange{2}{2} \left(x\right)
+\end{align*}
+  \item Explicitando $\lagrange{i}{2}$: $\lagrange{i}{n}\left(\x\right) = \prod_{\substack{j=0\\j\ne i}}^{n} \frac{\x - \x_j}{\x_i - \x_j}$\\
+\begin{minipage}{0.45\textwidth}
+\begin{align*}
+\action<2->{
+\lagrange{0}{2} &= %
+\frac{%
+  \only<2-3>{
+  \left(\x - \only<2>{\x_1}\only<3>{1}\right)%
+  \left(\x - \only<2>{\x_2}\only<3>{2}\right)
+  }
+  \only<4->{x^2 - 3 x + 2}%
+  }%
+  {%
+  \only<2-3>{
+  \left(\only<2>{\x_0}\only<3>{-1} - \only<2>{\x_1}\only<3>{1}\right)%
+  \left(\only<2>{\x_0}\only<3>{-1} - \only<2>{\x_2}\only<3>{2}\right)%
+  }
+  \only<4->{6}
+  }
+}\\
+\action<5->{
+\lagrange{1}{2} &= %
+\frac{%
+  \only<5-6>{
+  \left(\x - \only<5>{\x_0}\only<6>{(-1)}\right)%
+  \left(\x - \only<5>{\x_2}\only<6>{2}\right)
+  }
+  \only<7->{-x^2 + x + 2}%
+  }%
+  {%
+  \only<5-6>{
+  \left(\only<5>{\x_1}\only<6>{1} - \only<5>{\x_0}\only<6>{(-1)}\right)%
+  \left(\only<5>{\x_1}\only<6>{1} - \only<5>{\x_2}\only<6>{2}\right)%
+  }
+  \only<7->{2}
+  }
+}
+\end{align*}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{align*}
+\action<8->{
+\lagrange{2}{2} &= %
+\frac{%
+  \only<8-9>{
+  \left(\x - \only<8>{\x_0}\only<9>{(-1)}\right)%
+  \left(\x - \only<8>{\x_1}\only<9>{1}\right)
+  }
+  \only<10->{x^2 -1}%
+  }%
+  {%
+  \only<8-9>{
+  \left(\only<8>{\x_2}\only<9>{2} - \only<8>{\x_0}\only<9>{(-1)}\right)%
+  \left(\only<8>{\x_2}\only<9>{2} - \only<8>{\x_1}\only<9>{1}\right)%
+  }
+  \only<10->{3}
+  }
+}
+\end{align*}
+\end{minipage}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Substituindo em $P_2$}
+\begin{itemize}
+  \item De: 
+\begin{align*}
+P_2\left(\x\right) &= -4 \lagrange{0}{2} \left(\x\right) -2 \lagrange{1}{2} \left(\x\right) -10 \lagrange{2}{2} \left(x\right)\\
+\lagrange{0}{2} &= \frac{\x^2 - 3 \x + 2}{6}\\
+\lagrange{1}{2} &= \frac{-\x^2 + \x +2}{2}\\
+\lagrange{2}{2} &= \frac{\x^2 -1}{3}
+\end{align*}
+
+\begin{align*}
+P_2\left(\x\right) &= -4 \left(\frac{\x^2 - 3 \x + 2}{6}\right)  -2 \left(\frac{-\x^2 + \x +2}{2}\right) -10 \left(\frac{\x^2 -1}{3}\right)\\
+P_2\left(\x\right) &= -3 \x^2 + \x
+\end{align*}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Exercício 5.2}
+\begin{enumerate}
+\setcounter{enumi}{1}
+  \item Seja a função $\f$ dada pela tabela\\
+\begin{tabular}{r|rrr}
+$\x_i$ & \hspace{0.3cm} $-1$ & \hspace{0.3cm} $0$ & \hspace{0.3cm} $1$\\
+\hline
+$\f \left(\x_i\right)$ & $-3$ & $-1$ & $1$ 
+\end{tabular}
+  \begin{enumerate}
+    \item\label{item:exe52-1} Determine  o polinômio interpolador de $\f$ relativamente à tabela dada
+    \item\label{item:exe52-2} Verifique que $g \left(\x\right) = 2 x^3 -1$ satisfaz a condição $g\left(\x_i\right) = \f \left(\x_i\right)$, $i = 0, 1, 2$
+    \item\label{item:exe52-3} O que você pode afirmar a respeito do item b? Justifique.
+  \end{enumerate}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Exercício 5.2}{\Cref{item:exe52-1}}
+\begin{itemize}
+  \item Para os pontos tabelados\\
+\begin{tabular}{r|rrr}
+$\x_i$ & \hspace{0.3cm} $-1$ & \hspace{0.3cm} $0$ & \hspace{0.3cm} $1$\\
+\hline
+$\f \left(\x_i\right)$ & $-3$ & $-1$ & $1$ 
+\end{tabular}
+  \item Usando a fórmula do polinômio interpolador:
+\begin{align*}
+P_n\left(\x\right) &= \sum_{i=0}^{n} \f \left(\x_i\right) \lagrange{i}{n}\left(\x\right)\\
+%
+P_2\left(\x\right) &= -3 \lagrange{0}{2} \left(\x\right) -1 \lagrange{1}{2} \left(\x\right) +1 \lagrange{2}{2} \left(x\right)
+\end{align*}
+\begin{minipage}{0.45\textwidth}
+\begin{align*}
+\action<2->{
+\lagrange{0}{2} &= %
+\frac{%
+  \only<2-3>{
+  \left(\x - \only<2>{\x_1}\only<3>{0}\right)%
+  \left(\x - \only<2>{\x_2}\only<3>{1}\right)
+  }
+  \only<4->{x^2 - x}%
+  }%
+  {%
+  \only<2-3>{
+  \left(\only<2>{\x_0}\only<3>{-1} - \only<2>{\x_1}\only<3>{0}\right)%
+  \left(\only<2>{\x_0}\only<3>{-1} - \only<2>{\x_2}\only<3>{1}\right)%
+  }
+  \only<4->{2}
+  }
+}\\
+\action<5->{
+\lagrange{1}{2} &= %
+\frac{%
+  \only<5-6>{
+  \left(\x - \only<5>{\x_0}\only<6>{(-1)}\right)%
+  \left(\x - \only<5>{\x_2}\only<6>{1}\right)
+  }
+  \only<7->{x^2 -1}%
+  }%
+  {%
+  \only<5-6>{
+  \left(\only<5>{\x_1}\only<6>{0} - \only<5>{\x_0}\only<6>{(-1)}\right)%
+  \left(\only<5>{\x_1}\only<6>{0} - \only<5>{\x_2}\only<6>{1}\right)%
+  }
+  \only<7->{-1}
+  }
+}
+\end{align*}
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{align*}
+\action<8->{
+\lagrange{2}{2} &= %
+\frac{%
+  \only<8-9>{
+  \left(\x - \only<8>{\x_0}\only<9>{(-1)}\right)%
+  \left(\x - \only<8>{\x_1}\only<9>{0}\right)
+  }
+  \only<10->{x^2 +x}%
+  }%
+  {%
+  \only<8-9>{
+  \left(\only<8>{\x_2}\only<9>{1} - \only<8>{\x_0}\only<9>{(-1)}\right)%
+  \left(\only<8>{\x_2}\only<9>{1} - \only<8>{\x_1}\only<9>{0}\right)%
+  }
+  \only<10->{2}
+  }
+}
+\end{align*}
+\end{minipage}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exercício 5.2}{\Cref{item:exe52-1}}
+\begin{itemize}
+  \item Fazendo as substituições em $P_2$:
+\begin{align*}
+P_2\left(\x\right) &= -3 \lagrange{0}{2} \left(\x\right) -1 \lagrange{1}{2} \left(\x\right) +1 \lagrange{2}{2} \left(x\right)\\
+\lagrange{0}{2} &= \frac{\x^2 - \x}{2}\\
+\lagrange{1}{2} &= -\x^2 +1\\
+\lagrange{2}{2} &= \frac{\x^2 +x}{2}
+\end{align*}
+
+\begin{align*}
+P_2\left(\x\right) &= 
+  -3 \only<1>{\lagrange{0}{2}}\only<2->{\left(\frac{\x^2 - \x}{2}\right)}%
+  -1 \only<1-2>{\lagrange{1}{2}}\only<3->{\left(-\x^2 +1\right)}%
+  +1 \only<1-3>{\lagrange{2}{2}}\only<4->{\left(\frac{\x^2 +x}{2}\right)}\\
+\onslide<5->{P_2\left(\x\right) &= 2x -1}
+\end{align*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Exercício 5.2}{\Cref{item:exe52-2,item:exe52-3}}
+\Cref{item:exe52-2}: Verifique que $g \left(\x\right) = 2 x^3 -1$ satisfaz a condição $g\left(\x_i\right) = \f \left(\x_i\right)$, $i = 0, 1, 2$
+\begin{itemize}
+  \item<2-> Sim, satisfaz.
+\end{itemize}
+\Cref{item:exe52-3}: O que você pode afirmar a respeito do item b? Justifique.
+\begin{itemize}
+  \item<3-> Apesar de $g\left(x\right)$ satisfazer o tabelamento, não é um polinômio interpolador, pois seu grau é maior que 2.
+\end{itemize}
+\end{frame}
