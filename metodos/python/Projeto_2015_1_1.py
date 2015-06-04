@@ -132,6 +132,16 @@ def formato_11():
         "     |f(x_{2})|: {5}\n",
         "CONVERGIU",
         "NAO CONVERGIU")
+    
+def formato_13():
+    return ("\nMETODO DE {0}\n\n"
+        "{1}\n\n"
+        "Numero de Interacoes:{2}\n"
+        "Raiz final:{3}\n"
+        "|x_i-x_i-1|:{4}\n"
+        "|f(x_i)|:{5}\n",
+        "CONVERGIU",
+        "NÃO CONVERGIU")
 
     
 def padrao_saida(saida, metodo, t):
@@ -142,7 +152,7 @@ def padrao_saida(saida, metodo, t):
         erro_absoluto = t["erro_absoluto"]
         abs_fx = abs(t["fx"])
     
-    ap = formato_04()
+    ap = formato_13()
     
     conv = not "erro" in t and (t["erro_absoluto"] <= e1 or abs(t["fx"]) <= e2)
     
@@ -199,14 +209,14 @@ while True:
         parada = parada_param(N,e1,e2)
         x0 = (a + b) / 2
         
-        mn = NewtonRaphson(init, x0, f, df)
         mh = Halley(init, x0, f, df, ddf)
+        mn = NewtonRaphson(init, x0, f, df)
         mb = Bissecao(init, a, b, f)
 
         saida.write("Entrada: {}\n".format(ent))
         print("Entrada: {}".format(ent))
-        rodar_parada(mn, "Newton-Raphson", parada)
         rodar_parada(mh, "Halley", parada)
+        rodar_parada(mn, "Newton-Raphson", parada)
         rodar_parada(mb, "Bisseção", parada)
         
     else:
