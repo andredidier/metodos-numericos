@@ -67,16 +67,16 @@ matrizA_3_4 = [
 
 exemplo3_4 = LU(matrizA_3_4, [8,7,8])
 
-print("Matriz L")
-for linha in exemplo3_4.L:
-    print(linha)
+#print("Matriz L")
+#for linha in exemplo3_4.L:
+#    print(linha)
     
-print("Matriz U")
-for linha in exemplo3_4.U:
-    print(linha)
+#print("Matriz U")
+#for linha in exemplo3_4.U:
+#    print(linha)
 
-print("Matriz y")
-print(exemplo3_4.y)
+#print("Matriz y")
+#print(exemplo3_4.y)
 
-print("Matriz x")
-print(exemplo3_4.x)
+#print("Matriz x")
+#print(exemplo3_4.x)

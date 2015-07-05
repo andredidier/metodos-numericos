@@ -18,8 +18,6 @@ class MMQ:
     def montar_sistema(self):
         m = len(self.funcoes)
         n = len(self.tabela)
-        self.A = []
-        self.b = []
         for j in range(m):
             self.A.append([])
             self.b.append(0)
@@ -29,23 +27,7 @@ class MMQ:
     def __init__(self, tabela, lista_funcoes):
         self.tabela = tabela
         self.funcoes = lista_funcoes
+        self.A = []
+        self.b = []
         self.montar_sistema()
-        print("Matriz A")
-        for linha in self.A:
-            print(linha)
-        print("Matriz b = ", self.b)
         
-tabela4_1 = [
-             {'x': 1, 'f': 1.3},
-             {'x': 2, 'f': 1.8},
-             {'x': 3, 'f': 2.2},
-             {'x': 4, 'f': 0.4},
-             {'x': 5, 'f': 1.1},
-             {'x': 6, 'f': 3.0},
-             {'x': 7, 'f': 1.1},
-             {'x': 8, 'f': 0.8},
-             {'x': 9, 'f': 0.1}
-             ]
-funcoes4_1 = [ lambda x : 1, lambda x : x  ]
-
-exemplo4_1 = MMQ(tabela4_1, funcoes4_1)
