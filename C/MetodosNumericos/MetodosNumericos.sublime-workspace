@@ -1,0 +1,429 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"for",
+				"formatarNumeroMaquina"
+			],
+			[
+				"sis",
+				"sistemaEqLineares"
+			],
+			[
+				"tama",
+				"tamanhoSistema"
+			],
+			[
+				"Numero",
+				"NumeroMaquina"
+			],
+			[
+				"NUme",
+				"NumeroMaquina"
+			],
+			[
+				"valor",
+				"valorNumeroMaquina"
+			],
+			[
+				"usa",
+				"usarExistente"
+			],
+			[
+				"di",
+				"digitos"
+			],
+			[
+				"digito",
+				"digitoArred"
+			],
+			[
+				"numero",
+				"numeroUsuario"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"Exer",
+				"Exercício"
+			],
+			[
+				"Exec",
+				"Exercícios"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.c",
+			"settings":
+			{
+				"buffer_size": 6044,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "metodos.c",
+			"settings":
+			{
+				"buffer_size": 4032,
+				"line_ending": "Windows",
+				"name": "#include <stdio.h>"
+			}
+		},
+		{
+			"file": "metodos.h",
+			"settings":
+			{
+				"buffer_size": 1291,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "makefile",
+			"settings":
+			{
+				"buffer_size": 177,
+				"line_ending": "Windows",
+				"name": "IDIR =../include"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 81.0,
+		"last_filter": "instal",
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: lat",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: LaTe",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/andre/AppData/Local/Temp/Temp1_05-estruturas_repeticao.zip/05-estruturas_repeticao/exo08.c",
+		"/C/Users/andre/AppData/Local/Temp/Temp1_05-estruturas_repeticao.zip/05-estruturas_repeticao/exo07.c",
+		"/C/Users/andre/AppData/Local/Temp/Temp1_05-estruturas_repeticao.zip/05-estruturas_repeticao/exo06.c",
+		"/C/Users/andre/AppData/Local/Temp/Temp1_05-estruturas_repeticao.zip/05-estruturas_repeticao/exo05.c",
+		"/C/Users/andre/AppData/Local/Temp/Temp1_05-estruturas_repeticao.zip/05-estruturas_repeticao/exo04.c",
+		"/C/Users/andre/AppData/Local/Temp/Temp1_05-estruturas_repeticao.zip/05-estruturas_repeticao/exo01.c",
+		"/C/Users/andre/Desktop/NumeroMaquina.cls",
+		"/C/Users/andre/Desktop/MaquinaPF.cls",
+		"/C/Users/andre/Dropbox/site-alrd/WebContent/index.html",
+		"/C/Users/andre/Dropbox/site-alrd/WebContent/clean.css",
+		"/C/Users/andre/Dropbox/site-alrd/WebContent/programa-de-aula.js",
+		"/C/Users/andre/Dropbox/site-alrd/build.xml",
+		"/C/Users/andre/Dropbox/site-alrd/WebContent/cronograma-2015-1.js",
+		"/C/Users/andre/Dropbox/Organização/Aulas/Linguagens de Programação/Python/2015.1/Avaliador.py",
+		"/C/Users/andre/Dropbox/Organização/Aulas/Linguagens de Programação/Python/2015.1/20150618 Alunos Atuariais",
+		"/C/Users/andre/Dropbox/Organização/Aulas/Linguagens de Programação/Python/2015.1/20150629 Alunos Bacharelado Matemática",
+		"/C/Users/andre/Dropbox/Organização/Aulas/Linguagens de Programação/Python/2015.1/20150626 Alunos LEG",
+		"/C/Users/andre/Dropbox/Organização/Default/index.html",
+		"/C/Apps/Isabelle2014/src/HOL/Tools/ATP/scripts/remote_atp",
+		"/C/Users/andre/Dropbox/Organização/Aulas/Linguagens de Programação/Citações sobre programação.txt",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/sections/abstract.tex",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/sections/introduction.tex",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/sections/background.tex",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/sections/strategy.tex",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/sections/caseStudy.tex",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/sections/conclusion.tex",
+		"/C/Users/andre/AppData/Roaming/Sublime Text 3/Packages/User/LaTeXTools.sublime-settings",
+		"/C/Users/andre/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/andre/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/main.tex",
+		"/C/Users/andre/Dropbox/Organização/Contabilidade/2015/06-Junho/contabilidade.js",
+		"/C/Users/andre/Dropbox/Organização/Contabilidade/2015/07-Julho/contabilidade.js",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/ictac2015-alrd-acm-text/alrd.sty",
+		"/C/Users/andre/Desktop/comandos.ttf.txt",
+		"/C/Users/andre/Dropbox/Organização/Aulas/Linguagens de Programação/Python/2015.1/20150618 Alunos Ciências Atuariais",
+		"/C/Users/andre/Dropbox/Organização/Aulas/20160616 Alunos IF215 T8 Cálculo Numérico",
+		"/C/Users/andre/Work/git/site-alrd/WebContent/cronograma-2015-1.js",
+		"/C/Users/andre/Work/git/site-alrd/WebContent/programa-de-aula.js"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"printf",
+			"%c",
+			"abs(",
+			"n.",
+			"licen",
+			"Q 4.i.a, Q 4.i.b, Q 4.ii.a, Q 4.ii.b, Q 4.iii.a, Q 4.iii.b",
+			"		\"Motivação e apresentação\",\n		\"Erros, aritmética de ponto flutuante\",\n		\"Aritmética de ponto flutuante, arredondamentos, operações\",\n		\"Zeros de Função, aproximação inicial, métodos de quebra\",\n		\"Zeros de Função, métodos iterativos lineares\", \n		\"Secantes e critérios de parada\",\n		\"Sistemas de equações lineares e eliminação de Gauss\",\n		\"Decomposição LU\", \n		\"Jacobi e Gauss-Seidel\",\n		\"Convergência e sistemas mal-condicionados\", \n		\"Ajustamento e método dos mínimos quadrados\",\n		\"Caso não-linear e exercícios. Divulgação do projeto 2\",\n		\"Interpolação e Lagrange\",\n		\"Diferenças simples e divididas e Polinômio de Newton\",\n		\"Polinômio de Gregory-Newton e estudo de erros\", \n		\"Métodos dos trapézios, Simpson e erros\", ",
+			"		\"Elementos dos algoritmos e exercícios\",\n		\"Prática em estrutura sequenciais de algoritmos\",\n		\"Estruturas condicionais: se\",\n		\"Estruturas condicionais: expressões lógicas\",\n		\"Estruturas de repetição: para \",\n		\"Estruturas de repetição: enquanto\",\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"fabs(",
+			"n->",
+			"Acertos da questão"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6044,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4041,
+								4041
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3363.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "metodos.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4032,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								955,
+								955
+							]
+						],
+						"settings":
+						{
+							"auto_name": "#include <stdio.h>",
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 547.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "metodos.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1291,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								599,
+								578
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 242.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 177,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								43,
+								43
+							]
+						],
+						"settings":
+						{
+							"auto_name": "IDIR =../include",
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "MetodosNumericos.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 364.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
