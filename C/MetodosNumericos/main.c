@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <metodos.h>
+#include <math.h>
 
 MaquinaPontoFlutuante lerMaquina(void)
 {
@@ -243,8 +244,47 @@ int ident(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
 
 int const1(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
 {
-	converterNumeroMaquina(m, 1, res);
-	return 0;
+	return converterNumeroMaquina(m, 1, res);
+}
+
+int power2(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
+{
+	return multiplicar(m, x, x, res);
+}
+
+int power3(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
+{
+	int erro = power2(m, x, res);
+	if (erro) return erro;
+	return multiplicar(m, x, *res, res);
+}
+
+int power4(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
+{
+	int erro = power3(m, x, res);
+	if (erro) return erro;
+	return multiplicar(m, x, *res, res);
+}
+
+int sinNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
+{
+	double xd = valorNumeroMaquina(m, x);
+	xd = sin(xd);
+	return converterNumeroMaquina(m, xd, res);
+}
+
+int cosNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
+{
+	double xd = valorNumeroMaquina(m, x);
+	xd = cos(xd);
+	return converterNumeroMaquina(m, xd, res);
+}
+
+int tanNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
+{
+	double xd = valorNumeroMaquina(m, x);
+	xd = tan(xd);
+	return converterNumeroMaquina(m, xd, res);
 }
 
 void ajustamento(void)
@@ -261,17 +301,29 @@ void ajustamento(void)
 
 	m = lerMaquina();
 
-	int quantidadeFuncoesCadastradas = 2;
+	int quantidadeFuncoesCadastradas = 8;
 	char **descricaoFuncao = malloc(sizeof(char *) * quantidadeFuncoesCadastradas);
 	Funcao *funcao = malloc(sizeof(Funcao *) * quantidadeFuncoesCadastradas);
 	funcao[0] = &const1;
 	funcao[1] = &ident;
+	funcao[2] = &power2;
+	funcao[3] = &power3;
+	funcao[4] = &power4;
+	funcao[5] = &sinNumeroMaquina;
+	funcao[6] = &cosNumeroMaquina;
+	funcao[7] = &tanNumeroMaquina;
 	for (i = 0; i < quantidadeFuncoesCadastradas; i++)
 	{
 		descricaoFuncao[i] = malloc(100);
 	}
 	descricaoFuncao[0] = "Constante 1";
 	descricaoFuncao[1] = "Identidade";
+	descricaoFuncao[2] = "Potencia 2";
+	descricaoFuncao[3] = "Potencia 3";
+	descricaoFuncao[4] = "Potencia 4";
+	descricaoFuncao[5] = "Seno";
+	descricaoFuncao[6] = "Cosseno";
+	descricaoFuncao[7] = "Tangente";
 
 	printf("Quantos sao os pontos tabelados? ");
 	scanf("%d", &quantidadePontosTabelados);
@@ -315,9 +367,9 @@ void ajustamento(void)
 
 	char *formatado, *n2;
 	formatado = malloc(100);
-	for (i = 0; i < 2; i++)
+	for (i = 0; i < quantidadeFuncoes; i++)
 	{
-		for (j = 0; j < 2; j++)
+		for (j = 0; j < quantidadeFuncoes; j++)
 		{
 			formatarNumeroMaquina(m, A[i][j], formatado);
 			printf("\t(%s a_%d)", formatado, j);
