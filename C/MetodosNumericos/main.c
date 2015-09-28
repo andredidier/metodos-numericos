@@ -3,6 +3,9 @@
 #include <metodos.h>
 #include <math.h>
 
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
+
 MaquinaPontoFlutuante lerMaquina(void)
 {
 	MaquinaPontoFlutuante m;
@@ -266,25 +269,63 @@ int power4(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
 	return multiplicar(m, x, *res, res);
 }
 
-int sinNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
+int funcaoDoubleNumerMaquina(MaquinaPontoFlutuante m, double (*f)(double), NumeroMaquina x, NumeroMaquina *res)
 {
 	double xd = valorNumeroMaquina(m, x);
-	xd = sin(xd);
+	xd = f(xd);
 	return converterNumeroMaquina(m, xd, res);
+}
+
+int sinNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
+{
+	return funcaoDoubleNumerMaquina(m, &sin, x, res);
 }
 
 int cosNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
 {
-	double xd = valorNumeroMaquina(m, x);
-	xd = cos(xd);
-	return converterNumeroMaquina(m, xd, res);
+	return funcaoDoubleNumerMaquina(m, &cos, x, res);
 }
 
 int tanNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
 {
-	double xd = valorNumeroMaquina(m, x);
-	xd = tan(xd);
-	return converterNumeroMaquina(m, xd, res);
+	return funcaoDoubleNumerMaquina(m, &tan, x, res);
+}
+
+int expNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
+{
+	return funcaoDoubleNumerMaquina(m, &exp, x, res);
+}
+
+int logNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
+{
+	return funcaoDoubleNumerMaquina(m, &log, x, res);
+}
+
+int sqrtNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina x, NumeroMaquina *res)
+{
+	return funcaoDoubleNumerMaquina(m, &sqrt, x, res);
+}
+
+int lerTabelamento(FILE *ftab, MaquinaPontoFlutuante m, int quantidadePontosTabelados, NumeroMaquina **tabelamento)
+{
+	int i;
+	double x, fx;
+	for (i = 0; i < quantidadePontosTabelados; i++)
+	{
+		if (ftab)
+		{
+			fscanf(ftab, "%lf %lf ", &x, &fx);	
+		}
+		else
+		{
+			printf("Informe x_%d e f(x_%d): ", i, i);
+			scanf("%lf %lf", &x, &fx);
+		}
+
+		converterNumeroMaquina(m, x, &tabelamento[0][i]);
+		converterNumeroMaquina(m, fx, &tabelamento[1][i]);
+	}
+
 }
 
 void ajustamento(void)
@@ -301,34 +342,40 @@ void ajustamento(void)
 
 	m = lerMaquina();
 
-	int quantidadeFuncoesCadastradas = 8;
+	int quantidadeFuncoesCadastradas = 11;
 	char **descricaoFuncao = malloc(sizeof(char *) * quantidadeFuncoesCadastradas);
 	Funcao *funcao = malloc(sizeof(Funcao *) * quantidadeFuncoesCadastradas);
-	funcao[0] = &const1;
-	funcao[1] = &ident;
-	funcao[2] = &power2;
-	funcao[3] = &power3;
-	funcao[4] = &power4;
-	funcao[5] = &sinNumeroMaquina;
-	funcao[6] = &cosNumeroMaquina;
-	funcao[7] = &tanNumeroMaquina;
+	funcao[ 0] = &const1;
+	funcao[ 1] = &ident;
+	funcao[ 2] = &power2;
+	funcao[ 3] = &power3;
+	funcao[ 4] = &power4;
+	funcao[ 5] = &sinNumeroMaquina;
+	funcao[ 6] = &cosNumeroMaquina;
+	funcao[ 7] = &tanNumeroMaquina;
+	funcao[ 8] = &expNumeroMaquina;
+	funcao[ 9] = &logNumeroMaquina;
+	funcao[10] = &sqrtNumeroMaquina;
 	for (i = 0; i < quantidadeFuncoesCadastradas; i++)
 	{
 		descricaoFuncao[i] = malloc(100);
 	}
-	descricaoFuncao[0] = "Constante 1";
-	descricaoFuncao[1] = "Identidade";
-	descricaoFuncao[2] = "Potencia 2";
-	descricaoFuncao[3] = "Potencia 3";
-	descricaoFuncao[4] = "Potencia 4";
-	descricaoFuncao[5] = "Seno";
-	descricaoFuncao[6] = "Cosseno";
-	descricaoFuncao[7] = "Tangente";
+	descricaoFuncao[ 0] = "Constante 1";
+	descricaoFuncao[ 1] = "Identidade";
+	descricaoFuncao[ 2] = "Potencia 2";
+	descricaoFuncao[ 3] = "Potencia 3";
+	descricaoFuncao[ 4] = "Potencia 4";
+	descricaoFuncao[ 5] = "Seno";
+	descricaoFuncao[ 6] = "Cosseno";
+	descricaoFuncao[ 7] = "Tangente";
+	descricaoFuncao[ 8] = "Exponencial";
+	descricaoFuncao[ 9] = "Logaritmo neperiano (natural)";
+	descricaoFuncao[10] = "Raiz quadrada";
 
-	printf("Quantos sao os pontos tabelados? ");
-	scanf("%d", &quantidadePontosTabelados);
 	printf("Quantas sao as funcoes? ");
 	scanf("%d", &quantidadeFuncoes);
+
+	quantidadeFuncoes = MIN(quantidadeFuncoes, quantidadeFuncoesCadastradas);
 
 	G = malloc(sizeof(Funcao *) * quantidadeFuncoes);
 	for (i = 0; i < quantidadeFuncoes; i++)
@@ -343,18 +390,59 @@ void ajustamento(void)
 		printf("\tG[%d]: %s\n", i, descricaoFuncao[funcaoEscolhida-'a']);
 	}
 
+	FILE *ftab = fopen("tabelamento.bin", "r");
+	if (ftab)
+	{
+		char usarExistente;
+		printf("Deseja usar o tabelamento existente (s/n)? ");
+		scanf(" %c", &usarExistente);
+		int done = 0;
+		while(!done)
+		{
+			switch(usarExistente)
+			{
+				case 's':
+				case 'S':
+				case 'y':
+				case 'Y':
+					fscanf(ftab, "%d ", &quantidadePontosTabelados);
+					done = 1;
+					break;
+				case 'n':
+				case 'N':
+					fclose(ftab);
+					ftab = NULL;
+					done = 1;
+					break;
+			}
+		}
+	}
+
+	if (!ftab)
+	{
+		printf("Quantos sao os pontos tabelados? ");
+		scanf("%d", &quantidadePontosTabelados);
+	}
+
 	tabelamento = malloc(sizeof(NumeroMaquina *) * 2);
 	tabelamento[0] = malloc(sizeof(NumeroMaquina) * quantidadePontosTabelados);
 	tabelamento[1] = malloc(sizeof(NumeroMaquina) * quantidadePontosTabelados);
+	lerTabelamento(ftab, m, quantidadePontosTabelados, tabelamento);
+	fclose(ftab);
+	ftab = NULL;
 
-	double x, fx;
-	for (i = 0; i < quantidadePontosTabelados; i++)
+	if (!ftab)
 	{
-		printf("Informe x_%d e f(x_%d): ", i, i);
-		scanf("%lf %lf", &x, &fx);
-
-		converterNumeroMaquina(m, x, &tabelamento[0][i]);
-		converterNumeroMaquina(m, fx, &tabelamento[1][i]);
+		ftab = fopen("tabelamento.bin", "w");
+		fprintf(ftab, "%d ", quantidadePontosTabelados);
+		for (i = 0; i < quantidadePontosTabelados; i++)
+		{
+			fprintf(ftab, "%lf %lf ", 
+				valorNumeroMaquina(m, tabelamento[0][i]),
+				valorNumeroMaquina(m, tabelamento[1][i]));
+		}
+		fclose(ftab);
+		ftab = NULL;
 	}
 
 	A = malloc(sizeof(NumeroMaquina *) * quantidadeFuncoes);
