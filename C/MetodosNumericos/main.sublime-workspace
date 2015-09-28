@@ -1,0 +1,307 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"disciplin",
+				"disciplinaPara"
+			],
+			[
+				"disc",
+				"disciplinaPara"
+			],
+			[
+				"disci",
+				"disciplinaPara"
+			],
+			[
+				"disciplina",
+				"disciplinaDe"
+			],
+			[
+				"idD",
+				"idDisciplinaPara"
+			],
+			[
+				"Exer",
+				"Exercício"
+			],
+			[
+				"Exec",
+				"Exercícios"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 81.0,
+		"last_filter": "instal",
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: lat",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: LaTe",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/domain/saladeaula/Disciplina.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/domain/saladeaula/AgendaAula.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/domain/saladeaula/Turma.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/domain/saladeaula/HorarioAulaTurma.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/domain/saladeaula/ConteudoAgendaAulaSimples.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/domain/saladeaula/ConteudoAgendaAulaExercicio.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/domain/saladeaula/ConteudoAgendaAula.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/views/disciplina/show.gsp",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/controllers/saladeaula/DisciplinaController.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/services/saladeaula/ConteudoAulasService.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/views/disciplina/_form.gsp",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/views/disciplina/edit.gsp",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/conf/Config.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/domain/saladeaula/Aula.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/views/disciplina/selecionarCopia.gsp",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/i18n/messages.properties",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/i18n/messages_pt_BR.properties",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/controllers/saladeaula/AulaController.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/conf/DataSource.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/views/aula/index.gsp",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/views/aula/_form.gsp",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/views/aula/show.gsp",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/domain/saladeaula/Aluno.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/domain/saladeaula/Resposta.groovy",
+		"/C/Users/andre/Work/grails/qotd/grails-app/conf/DataSource.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/test/unit/saladeaula/DisciplinaSpec.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/test/unit/saladeaula/DisciplinaControllerSpec.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/test/unit/saladeaula/AvaliacaoSpec.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/domain/saladeaula/Avaliacao.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/test/unit/saladeaula/AgendaAulaSpec.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/test/unit/saladeaula/AlunoSpec.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/test/unit/saladeaula/AulaSpec.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/test/unit/saladeaula/RespostaSpec.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/test/unit/saladeaula/TurmaSpec.groovy",
+		"/C/Users/andre/Work/grails/salaDeAula/grails-app/domain/saladeaula/ProgramaDeAula.groovy",
+		"/C/Users/andre/Work/grails/qotd/grails-app/services/qotd/QuoteService.groovy",
+		"/C/Users/andre/Work/grails/qotd/grails-app/domain/qotd/Quote.groovy",
+		"/C/Users/andre/Work/grails/qotd/grails-app/views/layouts/quote.gsp",
+		"/C/Users/andre/Work/grails/qotd/grails-app/views/quote/random.gsp",
+		"/C/Users/andre/Work/grails/qotd/grails-app/controllers/qotd/QuoteController.groovy",
+		"/C/Users/andre/Work/grails/grails.sublime-project",
+		"/C/Users/andre/Work/grails/grails.sublime-workspace",
+		"/C/Users/andre/Work/grails/grails.sublime-project",
+		"/C/Users/andre/Work/grails/qotd/test/integration/qotd/QuoteServiceIntegrationSpec.groovy",
+		"/C/Users/andre/Work/grails/qotd/test/unit/qotd/QuoteControllerSpec.groovy",
+		"/C/Users/andre/Work/grails/qotd/test/unit/qotd/QuoteServiceSpec.groovy",
+		"/C/Users/andre/Work/grails/qotd/test/unit/qotd/QuoteSpec.groovy",
+		"/C/Users/andre/Work/grails/qotd/test/integration/qotd/QuoteServiceIntegrationIntegrationSpec.groovy",
+		"/C/Users/andre/Work/grails/qotd/grails-app/i18n/messages.properties",
+		"/C/Users/andre/Work/grails/qotd/grails-app/i18n/messages_pt_BR.properties",
+		"/C/Users/andre/Work/grails/qotd/grails-app/controllers/qotd/QotdController.groovy",
+		"/C/Users/andre/Work/grails/qotd/grails-app/conf/BuildConfig.groovy",
+		"/C/Users/andre/Work/grails/qotd/grails-app/conf/Config.groovy",
+		"/C/Users/andre/Work/grails/grails",
+		"/C/Users/andre/Work/grails/qotd/build.gradle",
+		"/C/Users/andre/Work/grails/qotd/grails-app/conf/application.yml",
+		"/C/Users/andre/Work/grails/qotd/grails-app/views/quote/edit.gsp",
+		"/C/Users/andre/Work/grails/qotd/grails-app/views/quote/create.gsp",
+		"/C/Users/andre/Work/grails/qotd/grails-app/views/quote/index.gsp",
+		"/C/Users/andre/Work/grails/qotd/src/integration-test/groovy/qotd/QuoteServiceIntegrationSpec.groovy",
+		"/C/Users/andre/Work/grails/qotd/src/test/groovy/qotd/QuoteSpec.groovy",
+		"/C/Users/andre/Work/grails/qotd/src/test/groovy/qotd/QuoteControllerSpec.groovy",
+		"/C/Users/andre/Work/grails/qotd/src/test/groovy/qotd/QuoteServiceSpec.groovy",
+		"/C/Users/andre/Dropbox/Organização/Aulas/Linguagens de Programação/Python/2015.1/Avaliador.py",
+		"/C/Users/andre/Dropbox/Organização/Aulas/Linguagens de Programação/Python/2015.1/20150618 Alunos Atuariais",
+		"/C/Users/andre/Dropbox/Organização/Aulas/Linguagens de Programação/Python/2015.1/20150629 Alunos Bacharelado Matemática",
+		"/C/Users/andre/Dropbox/Organização/Aulas/Linguagens de Programação/Python/2015.1/20150626 Alunos LEG",
+		"/C/Users/andre/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/andre/Dropbox/Organização/Default/index.html",
+		"/C/Apps/Isabelle2014/src/HOL/Tools/ATP/scripts/remote_atp",
+		"/C/Users/andre/Dropbox/Organização/Aulas/Linguagens de Programação/Citações sobre programação.txt",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/sections/abstract.tex",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/sections/introduction.tex",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/sections/background.tex",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/sections/strategy.tex",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/sections/caseStudy.tex",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/sections/conclusion.tex",
+		"/C/Users/andre/AppData/Roaming/Sublime Text 3/Packages/User/LaTeXTools.sublime-settings",
+		"/C/Users/andre/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/andre/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/fmi2015-alrd-acm/text/main.tex",
+		"/C/Users/andre/Dropbox/Organização/Contabilidade/2015/06-Junho/contabilidade.js",
+		"/C/Users/andre/Dropbox/Organização/Contabilidade/2015/07-Julho/contabilidade.js",
+		"/C/Users/andre/Work/git/trabalho-tecnico-alrd/ictac2015-alrd-acm-text/alrd.sty",
+		"/C/Users/andre/Desktop/comandos.ttf.txt",
+		"/C/Users/andre/Dropbox/Organização/Aulas/Linguagens de Programação/Python/2015.1/20150618 Alunos Ciências Atuariais",
+		"/C/Users/andre/Dropbox/Organização/Aulas/20160616 Alunos IF215 T8 Cálculo Numérico",
+		"/C/Users/andre/Work/git/site-alrd/WebContent/cronograma-2015-1.js",
+		"/C/Users/andre/Work/git/site-alrd/WebContent/programa-de-aula.js"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"disciplinaPara",
+			"DisciplinaPara",
+			"disciplinaPara",
+			"nullable",
+			"graii",
+			"JAVA_OPTS",
+			"index",
+			"data",
+			"Q 4.i.a, Q 4.i.b, Q 4.ii.a, Q 4.ii.b, Q 4.iii.a, Q 4.iii.b",
+			"		\"Motivação e apresentação\",\n		\"Erros, aritmética de ponto flutuante\",\n		\"Aritmética de ponto flutuante, arredondamentos, operações\",\n		\"Zeros de Função, aproximação inicial, métodos de quebra\",\n		\"Zeros de Função, métodos iterativos lineares\", \n		\"Secantes e critérios de parada\",\n		\"Sistemas de equações lineares e eliminação de Gauss\",\n		\"Decomposição LU\", \n		\"Jacobi e Gauss-Seidel\",\n		\"Convergência e sistemas mal-condicionados\", \n		\"Ajustamento e método dos mínimos quadrados\",\n		\"Caso não-linear e exercícios. Divulgação do projeto 2\",\n		\"Interpolação e Lagrange\",\n		\"Diferenças simples e divididas e Polinômio de Newton\",\n		\"Polinômio de Gregory-Newton e estudo de erros\", \n		\"Métodos dos trapézios, Simpson e erros\", ",
+			"		\"Elementos dos algoritmos e exercícios\",\n		\"Prática em estrutura sequenciais de algoritmos\",\n		\"Estruturas condicionais: se\",\n		\"Estruturas condicionais: expressões lógicas\",\n		\"Estruturas de repetição: para \",\n		\"Estruturas de repetição: enquanto\",\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"Acertos da questão"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "main.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 364.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

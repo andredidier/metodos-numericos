@@ -22,27 +22,40 @@ typedef struct
 	int expoente;
 } NumeroMaquina;
 
+typedef int (*Funcao)(MaquinaPontoFlutuante m, NumeroMaquina n1, 
+	NumeroMaquina *res);
+
 void formatarMaquina(MaquinaPontoFlutuante m, char* formatada);
 /**
 erro: 1: Overflow, -1: Underflow
 */
-int converterNumeroMaquina(MaquinaPontoFlutuante m, double numeroUsuario, NumeroMaquina* n);
+int converterNumeroMaquina(MaquinaPontoFlutuante m, double numeroUsuario, 
+	NumeroMaquina* n);
 double valorNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina numero);
-void formatarNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina numero, char* res);
+void formatarNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina numero, 
+	char* res);
 void arredondarNumeroMaquina(MaquinaPontoFlutuante m, NumeroMaquina* n);
 /**
 erro: 1: Overflow, -1: Underflow
 */
-int somar(MaquinaPontoFlutuante m, NumeroMaquina n1, NumeroMaquina n2, NumeroMaquina* res);
+int somar(MaquinaPontoFlutuante m, NumeroMaquina n1, NumeroMaquina n2, 
+	NumeroMaquina* res);
 /**
 erro: 1: Overflow, -1: Underflow
 */
-int multiplicar(MaquinaPontoFlutuante m, NumeroMaquina n1, NumeroMaquina n2, NumeroMaquina* res);
+int multiplicar(MaquinaPontoFlutuante m, NumeroMaquina n1, NumeroMaquina n2, 
+	NumeroMaquina* res);
 /**
 erro: 1: Overflow, -1: Underflow, 100: div by zero
 */
-int dividir(MaquinaPontoFlutuante m, NumeroMaquina n1, NumeroMaquina n2, NumeroMaquina* res);
+int dividir(MaquinaPontoFlutuante m, NumeroMaquina n1, NumeroMaquina n2, 
+	NumeroMaquina* res);
 
-int jacobi(MaquinaPontoFlutuante m, int tamanhoMatriz, NumeroMaquina** A, NumeroMaquina* b, NumeroMaquina* x);
+int jacobi(MaquinaPontoFlutuante m, int tamanhoMatriz, NumeroMaquina **A, 
+	NumeroMaquina* b, NumeroMaquina* x);
+
+int mmq(MaquinaPontoFlutuante m, int quantidadeFuncoes, Funcao *G,
+	int quantidadePontosTabelados, NumeroMaquina **tabelamento, 
+	NumeroMaquina **A, NumeroMaquina *b);
 
 #endif /* METODOS_H_ */

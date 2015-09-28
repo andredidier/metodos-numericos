@@ -1,6 +1,5 @@
 CC=gcc
-#CFLAGS=-I. -DDEBUG
-CFLAGS= -UDEBUG -I.
+CFLAGS=-I.
 DEPS = metodos.h 
 OBJ = main.o metodos.o
 
@@ -9,3 +8,14 @@ OBJ = main.o metodos.o
 
 main: $(OBJ)
 	gcc -o metodos $^ $(CFLAGS)
+
+clear:
+	rm *.o *.exe
+
+debug: clear
+debug: CFLAGS += -DDEBUG 
+debug: main
+
+release: clear
+release: CFLAGS += -UDEBUG
+release: main
