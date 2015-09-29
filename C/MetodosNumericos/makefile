@@ -1,12 +1,12 @@
 CC=gcc
-CFLAGS=-I.
+CFLAGS=-I. -lm
 DEPS = metodos.h 
-OBJ = main.o metodos.o
+OBJ = $(wildcard *.o)
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-main: $(OBJ)
+all: $(OBJ)
 	gcc -o metodos $^ $(CFLAGS)
 
 clear:
