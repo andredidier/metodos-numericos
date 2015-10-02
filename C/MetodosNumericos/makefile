@@ -1,12 +1,13 @@
 CC=gcc
 CFLAGS=-I. -lm
 DEPS = metodos.h 
-OBJ = $(wildcard *.o)
+#OBJ = $(wildcard .o)
+OBJ = $(patsubst %.c,%.o,$(wildcard *.c))
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-all: $(OBJ)
+all: $(OBJ) 
 	gcc -o metodos $^ $(CFLAGS)
 
 clear:
