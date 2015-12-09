@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"quan",
+				"quantidadePontosTabelados"
+			],
+			[
+				"ler",
+				"lerTabelamento"
+			],
+			[
+				"usar",
+				"usarExistente"
+			],
+			[
 				"tan",
 				"tanNumeroMaquina"
 			],
@@ -18,10 +30,6 @@
 			[
 				"nu",
 				"numero"
-			],
-			[
-				"quan",
-				"quantidadeFuncoes"
 			],
 			[
 				"taman",
@@ -123,7 +131,7 @@
 			"file": "main.c",
 			"settings":
 			{
-				"buffer_size": 13744,
+				"buffer_size": 15757,
 				"line_ending": "Windows"
 			}
 		},
@@ -200,6 +208,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/andre/AppData/Local/Temp/Temp1_Thiago Oliveira - 05967003428-cos-taylor.zip/cosseno.c",
 		"/C/Users/andre/AppData/Local/Temp/Temp1_05-estruturas_repeticao.zip/05-estruturas_repeticao/exo08.c",
 		"/C/Users/andre/AppData/Local/Temp/Temp1_05-estruturas_repeticao.zip/05-estruturas_repeticao/exo07.c",
 		"/C/Users/andre/AppData/Local/Temp/Temp1_05-estruturas_repeticao.zip/05-estruturas_repeticao/exo06.c",
@@ -298,15 +307,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13744,
+						"buffer_size": 15757,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8915,
-								8915
+								6616,
+								6616
 							]
 						],
 						"settings":
@@ -315,7 +324,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4451.0,
+						"translation.y": 5581.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -352,7 +361,7 @@
 						"translation.y": 2052.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -378,13 +387,14 @@
 							[
 								80
 							],
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 399.0,
+						"translation.x": 0.0,
+						"translation.y": 114.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -413,7 +423,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
